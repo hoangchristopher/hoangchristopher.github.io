@@ -1,0 +1,179 @@
+/* Question 0. Import a font and make all text in the body using that font. Check the homework instructions for more information!*/
+/* Set all text in the body to be a certain color (whatever color you choose!)*/
+/* Center all text in the body. Check out the homework spec for help.*/
+
+body {
+    margin: 50px auto;
+    max-width: 1200px;
+    font-family: 'Montserrat', sans-serif;
+    /* YOUR CODE HERE */
+}
+
+/* Question 1: Add a border, border radius, box shadow, or whatever other styling you'd like to your image! */
+img {
+    width: 175px;
+    border: 5px;
+    border-radius: 80%;
+    box-shadow: 4px 5px 16px gray;
+    justify-content: center;
+
+    /* YOUR CODE HERE */
+}
+
+h1 {
+    font-size: 45px;
+    transition: ease-in-out 0.5s;
+    text-align: center;
+    border-radius: 25px;
+    padding: 10px;
+    
+}
+
+
+/* Question 2. Select the h1 tag and add a hover effect! You can change the background-color, color, opacity, or anything you want.*/
+
+/* YOUR CODE HERE */
+h1:hover {
+
+    box-shadow: 4px 5px 16px gray;
+}
+
+
+
+
+/* Question 3. Add different background colors for all the different sections (Education, Experience, etc.) by selecting them via ids. */
+
+/* YOUR CODE HERE */
+
+#education {
+    box-shadow: 4px 5px 16px gray;
+    background-color: rgb(174, 221, 223);
+}
+
+#experience {
+    box-shadow: 4px 5px 16px gray;
+    background-color: rgb(164, 234, 181);
+}
+
+#projects {
+    box-shadow: 4px 5px 16px gray;
+    background-color: rgb(206, 164, 234);
+}
+
+#contact {
+    box-shadow: 4px 5px 16px gray;
+    background-color: rgb(234, 224, 164);
+}
+
+#reflection {
+    box-shadow: 4px 5px 16px gray;
+    background-color: rgb(246, 246, 246);
+
+    border-radius: 25px;
+    border: 2px solid rgb(174, 221, 223);
+    padding: 20px;
+
+}
+
+
+
+/* Question 4. Add margin, padding, and borders to the section-wrapper class! */
+
+.section-wrapper {
+    background-color: #dfdfdf;
+    /*YOUR CODE HERE*/
+    padding: 30px;
+    margin: 30px;
+}
+
+.reflection-wrapper {
+    background-color: #dfdfdf;
+    padding: 10px;
+}
+
+
+
+
+/* Experience Section */
+
+/* Question 5a. Use CSS Flexbox to display your experiences as shown in the diagram.
+ Hint: Check the homework spec for some help!*/
+
+.experience-wrapper {
+    display: flex; /* YOUR CODE HERE */
+    gap: 40px; /*YOUR CODE HERE*/
+    justify-content: space-around; /*YOUR CODE HERE*/
+}
+
+/* Question 5b. Add a background color to the experience-list-item class.*/
+
+.experience-list-item {
+    border: 4px solid #1d3557;
+    text-align: center;
+    width: 250px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    /*YOUR CODE HERE*/
+    background-color: rgb(190, 238, 202);
+
+    box-shadow: inset 0 0 0 0 rgb(98, 127, 105);
+    color: black;
+    margin: 0 -0.25rem;
+    padding: 0 -0.25rem;
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    /* Side note: the transition attribute makes effects look smoother! 
+    This means the hover effect will slowly kick in for 0.2s. */
+    transition: ease-in-out 0.2s;
+}
+
+
+
+/* Question 5c. Let's take a break! Add a hover effect to each experience-list-item div. 
+Experiment with border, border-radius, background-color, or whatever you want!*/
+
+.experience-list-item:hover {
+    box-shadow: inset 300px 0 0 0 rgb(97, 142, 109);
+    color: white;
+}
+
+
+
+
+/* Projects Section */
+
+/* Question 6. Use CSS Flexbox and hover effects for the Projects Section, just as you did for the Experience Section! */
+
+/*YOUR CODE HERE*/
+
+#projects {
+    box-shadow: inset 0 0 0 0 rgb(153, 122, 174);
+    color: black;
+
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#projects:hover {
+    box-shadow: inset 1200px 0 0 0 rgb(120, 97, 136);
+    color: white;
+}
+
+/* Contact Section */
+
+/* Question 7. Make your link look something like the one shown in the homework spec!*/
+
+a {
+    /*YOUR CODE HERE*/
+    background-color: rgb(113, 166, 222);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 4px 5px 16px gray;
+}
+
+a:hover, a:active {
+    background-color: rgb(91, 126, 163);
+}
