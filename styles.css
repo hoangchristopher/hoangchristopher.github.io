@@ -10,15 +10,7 @@ body {
 }
 
 /* Question 1: Add a border, border radius, box shadow, or whatever other styling you'd like to your image! */
-img {
-    width: 175px;
-    border: 5px;
-    border-radius: 80%;
-    box-shadow: 4px 5px 16px gray;
-    justify-content: center;
 
-    /* YOUR CODE HERE */
-}
 
 h1 {
     font-size: 45px;
@@ -72,6 +64,15 @@ h1:hover {
     border-radius: 25px;
     border: 2px solid rgb(174, 221, 223);
     padding: 20px;
+
+}
+
+#portrait {
+    width: 175px;
+    border: 5px;
+    border-radius: 80%;
+    box-shadow: 4px 5px 16px gray;
+    justify-content: space-around;
 
 }
 
