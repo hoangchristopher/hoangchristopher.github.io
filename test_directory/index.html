@@ -1,16 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <!-- (Part 2: CSS, Question 0) Font import here. If you don't know what this is yet, don't worry, we cover this in the Part 2 of the homework.-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+    <title>CS180 Project 0</title>
 </head>
-<body>
-    <h1>Testing directories!</h1>
-    <a href="./1/index.html">Project 1</a>
-</body>
+<body>  
+        <a href="../../index.html">← Return</a>
+        <h1>Project 0 - Becoming Friends with Your Camera</h1>
+        <!-- Question 1. Add a unique id to each div that belongs to the class "section-wrapper".-->
+        
+        <h2>Part 1: Selfie: The Wrong Way vs. The Right Way</h2>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="kim1.jpg" width="400px"/>
+				  <figcaption>Close up picture of my friend Kim without zooming in.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="kim2.jpg" width="400px"/>
+				  <figcaption>Far away picture of my friend Kim with zooming in.</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div>
+
+        <div id="reflection" class="reflection-wrapper">
+            <h3>Reflection</h3>
+            <p>
+                In the closer picture, we can see that the varying depths of Kim's various features are much more noticable. As for the farther, but zoomed in, picture, 
+                we can see that the everything seems flatter. That is, proportionally, the change in depth between each of Kim's facial features are not as prominent as in the close up picture. 
+                This change in depth perception can best be rationalized when thinking about how the background wall seems much closer to Kim in the second picture compared to the first picture. 
+                
+            </p>
+        </div>
+
+
+        <h2>Part 2: Architectural Perspective Compression</h2>
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="streetzoomed.jpg" width="300px"/>
+				  <figcaption>Zoomed-in picture of the street behind <br> Haviland Hall taken from far away.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="streetclose.jpg" width="300px"/>
+				  <figcaption>Regular picture of the street behind <br> Haviland Hall taken from up close.</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div>
+
+        
+        <h2>Part 3: The Dolly Zoom</h2>
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			    <tr>
+				    <td style="text-align: center;">
+				        <img src="adogif.gif" width="400px"/>
+				        <figcaption>Caption goes here.</figcaption>
+				    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="reflection" class="reflection-wrapper">
+            <h3>Reflection</h3>
+            <p>
+                Here is a gif of the Dolly Zoom technique being applied to an Ado plushie that has been placed inside of a bowl. 
+                At the beginning of the gif, we can see the plushie being captured in a way that makes it "bulge" outward, but as 
+                I physicaly move away from the plushie while zooming in, we can see hte gradual transition to a "flattened" image.
+            </p>
+        </div>
 </html>
