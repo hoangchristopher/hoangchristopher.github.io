@@ -11,6 +11,9 @@ body {
 
 /* Question 1: Add a border, border radius, box shadow, or whatever other styling you'd like to your image! */
 
+table {
+    margin: 50px auto;
+}
 
 h1 {
     font-size: 45px;
