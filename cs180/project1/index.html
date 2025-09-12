@@ -15,9 +15,56 @@
 <body>  
         <a href="../../index.html">← Return</a>
         <h1>Project 1: Images of the Russian Empire -- Colorizing the Prokudin-Gorskii Photo Collection</h1>
-        <!-- Question 1. Add a unique id to each div that belongs to the class "section-wrapper".-->
-        
-        <h2>Part 1: Single-scale Alignment</h2>
+  
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            The Prokudin-Gorskii Photo Collection is a set of digitized glass plate images that are 
+            split into three different color channels: red, green, and blue. When aligning these 
+            three color channels and overlaying them atop one another, you can construct a full-color image. In this project, we will be 
+            exploring a few different ways of automating this process.
+          </p>
+        </div>
+        <h2>Part 1: Single-scale Alignment (with Euclidean Distance / L2)</h2>
+
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            The raw data from the collection contains images that show the three color channels 
+            stacked vertically. To separate the channels, we can represent the entire image file 
+            as a matrix of float values that correspond to each pixel. From there, 
+            we can use slicing techniques to split the matrix into three equal parts. However, a purely 
+            proportional approach to splitting these three channels and overlaying them on top of each 
+            other won't result in an appealing image. This is due to various things like the slight variance 
+            in each scene's color channels that stem from the entropy involved with taking three separate 
+            images, not lining up the three channels during the scanning process, etc.   
+          </p>
+          <p>
+            So, we need to employ a technique that will help us align each color channel optimally. The 
+            core of our approach with be searching over a window of possible displacements (i.e. [-15, 15] pixels in both the vertical and horizontal direction) 
+             for each color channel while using a scoring metric to determine which placement is the 
+            most optimal. The alignment process will have one color channel serve as the "anchor" that the 
+            other two will be aligned to. The first metric we'll try is the Euclidean Distance, which is the square root of the sum of the square 
+            differences between each pixel of the images. Since Euclidean Distance measures the distance between 
+            each pixel value, the displacement with the lowest resulting Euclidean Distance between a color 
+            channel and its anchor channel will be deemed the most optimal.
+          </p>
+          <p>
+            Also, at this point, we will use single-scale alignment. The "single-scale" here refers to only involving 
+            one scale of the respective image you are trying to align (we can see how this can be expanded on 
+            later). 
+          </p>
+          <p>
+            Here are the results of using Euclidean Distance with single-scale alignment to construct some 
+            full-color images from the Prokudin-Gorskii Photo Collection. Note: These images were aligned with 
+            the blue channel acting as the "anchor," unless stated otherwise.
+          </p>
+        </div>
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            Here are the results of using Euclidean Distance with single-scale alignment to construct some 
+            full-color images from the Prokudin-Gorskii Photo Collection. Note: These images were aligned with 
+            the blue channel acting as the "anchor," unless stated otherwise.
+          </p>
+        </div>
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tr>
           <td style="text-align: center;">
@@ -41,14 +88,6 @@
 			  </tr>
       </table>
 
-
-      <div id="reflection" class="reflection-wrapper">
-            <p>
-              Explain implementation of single-scale alignment using euclidean norm
-            </p>
-      </div>
-
-
         <h3>Cathedral - A special case</h3>
       
       <table style="width: 100%; text-align: center; border-collapse: collapse;">
@@ -56,7 +95,7 @@
           <td style="text-align: center;">
 				  <img src="projectimages/euccathedralAligned[2, 5][2, 0].png" width="400px"/>
 				  <figcaption>
-            "cathedral" with incorrect color channel alignment post-pre-processing implementation. <br> <br> <br> <br>
+            "cathedral" with incorrect color channel alignment <br> post-pre-processing implementation. <br> <br> <br> <br>
           </figcaption>
 				</td>
 				<td style="text-align: center;">
@@ -76,21 +115,59 @@
               Here is an image titled "cathedral." When I initially implemented single-scale alignment 
               without image pre-processing (cropping), the image came out pretty well. However, 
               as I progressed through the assignment and implemented image pre-processing into the color 
-              channel alignment process, this altered the results of the "cathedral" image. However, this 
+              channel alignment process, this altered the results of the "cathedral" image to look like the image on the left. However, this 
               ended up being fixed by anchoring the image alignment to the green channel instead of the blue 
               channel. The cropping of edge values in the image matrix must have resulted in an unexpected 
-              misrepresentation of where the "optimal" channel displacement was.
+              misrepresentation of where the "optimal" channel displacement due to different calculations.
             </p>
         </div>
 
         
 
 
-      <h2>Part 2: Multi-scale Pyramid Alignment (with NCC / L2)</h2>
+      <h2>Part 2: Multi-scale Pyramid Alignment (with NCC)</h2>
       <div id="reflection" class="reflection-wrapper">
             <p>
-              Explain dilemma and Explain implementation of NCC and image pyramids
+              With smaller images like the ones shown above, single-scale alignment is serviceable, 
+              as optimal pixel displacements aren't going to be too big. However, in the case of 
+              higher resolution glass plate scans, exhaustively searching to find a relatively 
+              larger pixel displacement is going to take a lot of time. To fix this, we can utilize 
+              multi-scale pyramid alignment, as opposed to single-scale alignment. Multi-scale 
+              pyramid alignment sees us constructing an "image pyramid," which is simply a collection 
+              of copies of a respective image that are iteratively downscaled. With the lower-resolution 
+              copies of the high-resolution image, we can quickly perform our alignment algorithms to 
+              receive an estimate of where the optimal displacement should be for the next, higher-resolution 
+              versions of the image.
             </p>
+            <p>
+              For implementation specifics, we can recursively scale our image by 0.5 until its color 
+              channels have a height below 50 pixels. Then, we find the estimated optimal displacement 
+              on the smallest version of the image, and then return the result to the next highest resolution 
+              version of the image, which should be twice as big as the current level. Now at the next highest 
+              resolution, we scale the estimated optimal displacement by 2 (again, because we are now working 
+              with an image that is twice as big), and then run the alignment algorithm centered around this estimated 
+              optimal displacement. This saves us a lot of time and computing power because we already know that 
+              the optimal displacement should be in this region of the image, and we don't have to spend time 
+              looking anywhere else. From there, we repeat this process until we can finally run the alignment algorithm the full-resolution 
+              image. 
+            </p>
+            <p>
+              With this section of the project, I also implemented Normalized Cross-Correlation (NCC), an 
+              alignment method to use instead of Euclidean Distance. NCC involves takng the dot product between 
+              two normalized vectors, where the two vectors are vertical, 1-column, equivalents of the image 
+              matrices belonging to the image-to-be-aligned and anchor image respectively. Here, a higher resulting 
+              dot product correlates to better alignment.
+            </p>
+            <p>
+              Another thing I implemented to improve result quality was predefined border cropping. Given that 
+              the majority of these images have some type of somewhat solid-colored border, leaving these borders 
+              in during the alignment process would result in a fasely high correlation due to the matching borders 
+              (when we would rather find high correlation toward the middle of the image). To do this, I simply 
+              used slicing techniques to crop the outer 5% of each color channel after partitioning them from the 
+              source image.
+            </p>
+
+
       </div>
       <h2>Image Gallery - Generated using Image Pyramids</h2>
 
@@ -263,7 +340,7 @@
             that looked like the left image. However, I was able to fix this by anchoring 
             the alignment process to the green channel of "emir," which resulted in the image 
             on the right. This is most likely due to the different brightness levels of each 
-            color channel causing NCC metric to behave unexpectedly when anchored on certains channels 
+            color channel causing NCC metric to behave unexpectedly when anchored on certain channels 
             when compared to others. 
         </p>
       </div>

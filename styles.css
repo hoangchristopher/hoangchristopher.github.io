@@ -67,6 +67,7 @@ h1:hover {
     border-radius: 25px;
     border: 2px solid rgb(174, 221, 223);
     padding: 15px;
+    margin: 30px;
 
 }
 
@@ -93,7 +94,7 @@ h1:hover {
 .reflection-wrapper {
     background-color: #dfdfdf;
     padding: 10px;
-}
+    margin: 30px;
 
 
 
