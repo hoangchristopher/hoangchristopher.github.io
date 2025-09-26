@@ -329,6 +329,11 @@ a:hover {
     transition: transform 0.3s ease;
 }
 
+.img {
+    display: flex;
+    justify-content: center;
+}
+
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0,0,0,0.15);
