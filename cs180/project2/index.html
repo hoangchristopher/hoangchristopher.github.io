@@ -41,15 +41,14 @@
           <p>
             From there, we can iterate through each of the padded image's non-padding pixels 
             with our kernel, performing various multiplication and addition operations within 
-            the kernel's defined area. During this phase, the kernel's window is defined by slicing 
-            operations using the current pixel's coordinate and the kernel's dimensions.
+            the kernel's defined area. 
           </p>
 
           <p>
             During this phase, you can perform the kernel operations in one of two ways. You could 
-            either use two more for loops to iterate through the area that the kernel covers, or 
+            either use two more for-loops to iterate through the area that the kernel covers, or 
             you could use slicing to grab the relevant indices around your current pixel to 
-            grab the values inside of your defined kernel.
+            index into the values inside of your defined kernel.
           </p>
 
           <p>
@@ -135,7 +134,7 @@
               perform my kernel operations, as going through 2 extra for-loops slowed down execution time 
               by a noticable amount. As for borders, given that convolution iterates through each 
               pixel of an image in a specific direction, the convolved result may show evidence 
-              of that directional scrubbing through the way averages that appear throughout the image. 
+              of that directional scrubbing through its lighter and darker regions. 
               
             </p>
       </div>
@@ -188,7 +187,7 @@
           Binarization of the image is done by assigning all pixels above a certain value as 1, 
           while the rest are assigned 0. This helps visualize what we determine as "relevent" 
           pixels. With a lower threshold, many specks of white may appear on the binarized image 
-          due to the various non-zero values found throughout the gradient magnitude image, so 
+          due to the various relatively "high" non-zero values found throughout the gradient magnitude image, so 
           I decided to choose a threshold that could give the cameraman defined details while not 
           including too many white specks (which was that anything greater than 0.25 would be assigned a value of 1 and 0 otherwise).
         </p>
@@ -200,7 +199,7 @@
       <div id="reflection" class="reflection-wrapper">
         <p>
           To try and eliminate even more of the white specks, or noise, from the result, we can apply 
-          a gassian smoothing filter to blur the image before take its derivatives. With a blurred image, 
+          a gassian smoothing filter to blur the image before taking its derivatives. With a blurred image, 
           there will be less high frequencies, and thus, random high frequencies throughout the image won't 
           be able to "influence" artifacts too much and send their values over the binarization threshold.
         </p>
@@ -279,12 +278,12 @@
       <div id="reflection" class="reflection-wrapper">
         <p>
           Here, we experiment with applying low-pass filters to images, eliminating their 
-          high frequencies and manipulating the results. Specifically, when we subtract 
+          high frequencies, and manipulating the results. Specifically, when we subtract 
           a low-passed version of an image from its source image, we are left with all of 
           the image's high frequencies. These high frequencies are all of the edges and 
           prominent details of the image. With these high frequencies, we can add them back 
           to the original image to obtain a "sharpened" version of the original image. Here 
-          is is on a picture of the Taj Mahal.
+          is the procedure done on a picture of the Taj Mahal.
         </p>
       </div>
 
@@ -311,7 +310,7 @@
           <td style="text-align: center;">
             <img src="projectimages/21/high_taj.jpg" width="400px"/>
               <figcaption>
-                High-passed Taj Mahal (obtained by subtracting low-passed version from the original).
+                High-passed Taj Mahal (obtained by subtracting <br> low-passed version from the original).
               </figcaption>
 				  </td>
 			  </tr>
@@ -319,13 +318,13 @@
           <td style="text-align: center;">
             <img src="projectimages/21/sharp_taj.jpg" width="400px"/>
               <figcaption>
-                Taj Mahal "sharpened" by an addition of 1-times the high-passed image.
+                Taj Mahal "sharpened" by an addition <br> of 1-times the high-passed image.
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/21/sharper_taj.jpg" width="400px"/>
               <figcaption>
-                The previously "sharpened" Taj Mahal "sharpened" again through the same process.
+                The previously "sharpened" Taj Mahal "sharpened" <br> again through the same process.
                 
               </figcaption>
 				  </td>
@@ -346,10 +345,10 @@
           A fun thing we can do to create hybrid images is overlay the high frequencies of one image 
           onto another image containing low frequencies. This results in an image where, if you view 
           it from up-close, your eyes will pick up on the high frequencies and see one image, but 
-          when you view it from far away, and thus your eyes pick up on the low frequencies, you see 
+          when you view it from far away, causing your eyes pick up on the low frequencies, you see 
           another image.
 
-          Here is an example of the effect done on a man and his cat.
+          Here is an example of the effect done on Derek H and his cat.
         </p>
       </div>
 
@@ -382,6 +381,13 @@
 				  </td>
 			  </tr>
       </table>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here are some examples I chose. Specifically, with race horse Symboli Rudolf and his 
+          associated stuffed animal, and two emojis.
+        </p>
+      </div>
 
       <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tr>
@@ -451,13 +457,13 @@
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/rudolf.jpg" width="400px"/>
               <figcaption>
-                Log Magnitude of the Fouruer Transform of Symboli Rudolf
+                Original image of Symboli Rudolf
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/rudolfhead.jpg" width="400px"/>
               <figcaption>
-                Log Magnitude of the Fouruer Transform of Symboli Rudolf's Stuffed Animal
+                                Original image of Symboli Rudolf's Stuffed Animal
               </figcaption>
 				  </td>
 			  </tr>
@@ -652,7 +658,7 @@
       <div id="reflection" class="reflection-wrapper">
         <p>
           Here is the finalized "oraple" image, as well as other fusion images that 
-          I created with their respective masks.
+          I created, with their respective masks.
         </p>
       </div>
 
