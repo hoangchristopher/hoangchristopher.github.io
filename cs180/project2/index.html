@@ -18,7 +18,8 @@
   
         <div id="reflection" class="reflection-wrapper">
           <p>
-            [overview]
+            In this project, we will be exploring how to analyze and manipulate the 
+            various low and high frequencies of images.
           </p>
         </div>
 
@@ -28,36 +29,64 @@
 
         <div id="reflection" class="reflection-wrapper">
           <p>
-            [explain convolution implementation]
+            To convolve over an image we need to iterate over all of the pixels in the image 
+            with a kernel. First, to take care of cases where our kernel exceeds the bounds of 
+            our image, we can incorporate zero-padding, where any value our kernel decides to 
+            operate on that is outside of the image will be 0. This can be done by surrounding 
+            the source image with layers of 0s determined by half the kernel's width and height 
+            respectively. This was done by creating a larger numpy array of 0s and placing the 
+            original image inside of it according to the kernel's dimensions. 
+          </p>
+
+          <p>
+            From there, we can iterate through each of the padded image's non-padding pixels 
+            with our kernel, performing various multiplication and addition operations within 
+            the kernel's defined area. During this phase, the kernel's window is defined by slicing 
+            operations using the current pixel's coordinate and the kernel's dimensions.
+          </p>
+
+          <p>
+            During this phase, you can perform the kernel operations in one of two ways. You could 
+            either use two more for loops to iterate through the area that the kernel covers, or 
+            you could use slicing to grab the relevant indices around your current pixel to 
+            grab the values inside of your defined kernel.
+          </p>
+
+          <p>
+            Finally, we can return the resulting image represented as a matrix without zero-padding
           </p>
         </div>
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            Here are the results of convolving the finite difference filters in the x and y directions 
+            on a 5x5 matrix containing a black cross and white elsewhere.
+          </p>
+        </div>
+
 
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tr>
           <td style="text-align: center;">
 				  <img src="projectimages/11/test_dx_snip.jpg" width="400px"/>
 				  <figcaption>
-            "monastery" <br>
-            Green Offset: [2, -3] <br> 
-            Red Offset: [2, 3] <br>
-            Time to Align: ~0.31s
+            Dx (1x3) = [1, 0, -1]
           </figcaption>
 				</td>
 				<td style="text-align: center;">
 				  <img src="projectimages/11/test_dy_snip.jpg" width="400px"/>
 				  <figcaption>
-            "tobolsk" <br>
-            Green Offset: [3, 3] <br> 
-            Red Offset: [3, 6] <br>
-            Time to Align: ~0.3s
+            Dy (3x1) = [1, 0, -1]^T
+            
           </figcaption>
 				</td>
 			  </tr>
       </table>
+
+      
           
         <div id="reflection" class="reflection-wrapper">
           <p>
-            [here are my results]
+            Here are the results of colvolving over a picture of me.
           </p>
         </div>
 
@@ -66,26 +95,20 @@
           <td style="text-align: center;">
 				  <img src="projectimages/11/conv2_dx.jpg" width="400px"/>
 				  <figcaption>
-            "monastery" <br>
-            Green Offset: [2, -3] <br> 
-            Red Offset: [2, 3] <br>
-            Time to Align: ~0.31s
+            Picture of me with the Dx convolution applied.
           </figcaption>
 				</td>
 				<td style="text-align: center;">
 				  <img src="projectimages/11/conv2_dy.jpg" width="400px"/>
 				  <figcaption>
-            "tobolsk" <br>
-            Green Offset: [3, 3] <br> 
-            Red Offset: [3, 6] <br>
-            Time to Align: ~0.3s
+            Picture of me with the Dy convolution applied.
           </figcaption>
 				</td>
 			  </tr>
       </table>
       <div id="reflection" class="reflection-wrapper">
           <p>
-            [here are scipy's results]
+            Here are the results of using scipy's 2d convolution function to convolve over a picture of me.
           </p>
         </div>
       <table style="width: 100%; text-align: center; border-collapse: collapse;">
@@ -93,34 +116,36 @@
           <td style="text-align: center;">
 				  <img src="projectimages/11/scipy_conv_Dx.jpg" width="400px"/>
 				  <figcaption>
-            "monastery" <br>
-            Green Offset: [2, -3] <br> 
-            Red Offset: [2, 3] <br>
-            Time to Align: ~0.31s
+            Picture of me with the Dx convolution applied using scipy.
           </figcaption>
 				</td>
 				<td style="text-align: center;">
 				  <img src="projectimages/11/scipy_conv_Dy.jpg" width="400px"/>
 				  <figcaption>
-            "tobolsk" <br>
-            Green Offset: [3, 3] <br> 
-            Red Offset: [3, 6] <br>
-            Time to Align: ~0.3s
+           Picture of me with the Dy convolution applied using scipy.
+
           </figcaption>
 				</td>
 			  </tr>
       </table>
 
+      <div id="reflection" class="reflection-wrapper">
+            <p>
+              When using the convolution function I created from scratch, I used matrix slicing to 
+              perform my kernel operations, as going through 2 extra for-loops slowed down execution time 
+              by a noticable amount. As for borders, given that convolution iterates through each 
+              pixel of an image in a specific direction, the convolved result may show evidence 
+              of that directional scrubbing through the way averages that appear throughout the image. 
+              
+            </p>
+      </div>
+      
+
 
       <h3>Part 1.2: Finite Difference Operator</h3>
       <div id="reflection" class="reflection-wrapper">
-            <p>
-              [overview]
-            </p>
-      </div>
-      <div id="reflection" class="reflection-wrapper">
         <p>
-          [here it is on cameraman]
+          Here is the result of running the finite difference operators on a picture of a cameraman.
         </p>
       </div>
 
@@ -129,67 +154,59 @@
           <td style="text-align: center;">
 				  <img src="projectimages/12/dx.jpg" width="400px"/>
 				  <figcaption>
-            "monastery" <br>
-            Green Offset: [2, -3] <br> 
-            Red Offset: [2, 3] <br>
-            Time to Align: ~0.31s
+            Cameraman image with dx difference operator applied.
           </figcaption>
 				</td>
 				<td style="text-align: center;">
 				  <img src="projectimages/12/dy.jpg" width="400px"/>
 				  <figcaption>
-            "tobolsk" <br>
-            Green Offset: [3, 3] <br> 
-            Red Offset: [3, 6] <br>
-            Time to Align: ~0.3s
+            Cameraman image with dy difference operator applied.
           </figcaption>
 				</td>
 			  </tr>
       </table>
-
-      <div id="reflection" class="reflection-wrapper">
-        <p>
-          [explain grad mag and why to binarize]
-        </p>
-      </div>
 
       <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tr>
           <td style="text-align: center;">
 				  <img src="projectimages/12/gradmag.jpg" width="400px"/>
 				  <figcaption>
-            "monastery" <br>
-            Green Offset: [2, -3] <br> 
-            Red Offset: [2, 3] <br>
-            Time to Align: ~0.31s
+            Gradient magnitude of the two directional image derivatives.
           </figcaption>
 				</td>
 				<td style="text-align: center;">
 				  <img src="projectimages/12/binarized.jpg" width="400px"/>
 				  <figcaption>
-            "tobolsk" <br>
-            Green Offset: [3, 3] <br> 
-            Red Offset: [3, 6] <br>
-            Time to Align: ~0.3s
+            A binarized version of the gradient magnitude image.
           </figcaption>
 				</td>
 			  </tr>
       </table>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Binarization of the image is done by assigning all pixels above a certain value as 1, 
+          while the rest are assigned 0. This helps visualize what we determine as "relevent" 
+          pixels. With a lower threshold, many specks of white may appear on the binarized image 
+          due to the various non-zero values found throughout the gradient magnitude image, so 
+          I decided to choose a threshold that could give the cameraman defined details while not 
+          including too many white specks (which was that anything greater than 0.25 would be assigned a value of 1 and 0 otherwise).
+        </p>
+      </div>
 
 
       <h3>Part 1.3: Derivative of Gaussian (DoG) Filter</h3>
 
       <div id="reflection" class="reflection-wrapper">
         <p>
-          [overview]
+          To try and eliminate even more of the white specks, or noise, from the result, we can apply 
+          a gassian smoothing filter to blur the image before take its derivatives. With a blurred image, 
+          there will be less high frequencies, and thus, random high frequencies throughout the image won't 
+          be able to "influence" artifacts too much and send their values over the binarization threshold.
         </p>
       </div>
 
-      <div id="reflection" class="reflection-wrapper">
-        <p>
-          [dogx and dogy]
-        </p>
-      </div>
+      
 
 
       <table style="width: 100%; text-align: center; border-collapse: collapse;">
@@ -197,28 +214,20 @@
           <td style="text-align: center;">
             <img src="projectimages/13/two_dim_gaussian.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Here is the 2-dimensional gaussian that was applied to the cameraman image.
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/13/DoGx.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Here is the derivative of the gaussian (DoG) in the x direction.
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/13/DoGy.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                Here is the derivative of the gaussian (DoG) in the y direction.
+                
               </figcaption>
 				  </td>
 			  </tr>
@@ -226,7 +235,7 @@
 
       <div id="reflection" class="reflection-wrapper">
         <p>
-          [finite vs dog]
+          Here, we can compare the results of the previous part with this part.
         </p>
       </div>
 
@@ -236,19 +245,14 @@
           <td style="text-align: center;">
             <img src="projectimages/12/gradmag.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Gradient magnitude of the two directional image derivatives.
+
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/12/binarized.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                A binarized version of the gradient magnitude image.
               </figcaption>
 				  </td>
 			  </tr>
@@ -256,19 +260,13 @@
           <td style="text-align: center;">
             <img src="projectimages/13/DoGAppliedMag.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Cameraman image with gaussian smoothing and DoG filters applied.
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/13/binarizedDoG.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Binarized cameraman image with gaussian smoothing and DoG filters applied.
               </figcaption>
 				  </td>
 			  </tr>
@@ -280,7 +278,13 @@
 
       <div id="reflection" class="reflection-wrapper">
         <p>
-          [explain]
+          Here, we experiment with applying low-pass filters to images, eliminating their 
+          high frequencies and manipulating the results. Specifically, when we subtract 
+          a low-passed version of an image from its source image, we are left with all of 
+          the image's high frequencies. These high frequencies are all of the edges and 
+          prominent details of the image. With these high frequencies, we can add them back 
+          to the original image to obtain a "sharpened" version of the original image. Here 
+          is is on a picture of the Taj Mahal.
         </p>
       </div>
 
@@ -289,10 +293,7 @@
           <td style="text-align: center;">
             <img src="projectimages/21/taj.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Image of the Taj Mahal
               </figcaption>
 				  </td>
 			  </tr>
@@ -304,19 +305,13 @@
           <td style="text-align: center;">
             <img src="projectimages/21/blurred_taj.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Low-passed Taj Mahal
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/21/high_taj.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                High-passed Taj Mahal (obtained by subtracting low-passed version from the original).
               </figcaption>
 				  </td>
 			  </tr>
@@ -324,29 +319,37 @@
           <td style="text-align: center;">
             <img src="projectimages/21/sharp_taj.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Taj Mahal "sharpened" by an addition of 1-times the high-passed image.
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/21/sharper_taj.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                The previously "sharpened" Taj Mahal "sharpened" again through the same process.
+                
               </figcaption>
 				  </td>
 			  </tr>
       </table>
 
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here, we can see that the "sharper" an image gets, the more coarse and grainy it is, 
+          as all of the fluctuations in frequency are enunciated in the result.
+        </p>
+      </div>
+
       <h3>Part 2.2: Hybrid Images</h3>
 
       <div id="reflection" class="reflection-wrapper">
         <p>
-          [explain]
+          A fun thing we can do to create hybrid images is overlay the high frequencies of one image 
+          onto another image containing low frequencies. This results in an image where, if you view 
+          it from up-close, your eyes will pick up on the high frequencies and see one image, but 
+          when you view it from far away, and thus your eyes pick up on the low frequencies, you see 
+          another image.
+
+          Here is an example of the effect done on a man and his cat.
         </p>
       </div>
 
@@ -357,19 +360,13 @@
           <td style="text-align: center;">
             <img src="projectimages/22/DerekPicture.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Derek
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/22/nutmeg.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Nutmeg
               </figcaption>
 				  </td>
 			  </tr>
@@ -380,10 +377,7 @@
           <td style="text-align: center;">
             <img src="projectimages/22/derekfixed.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Derek-Nutmeg Hybrid
               </figcaption>
 				  </td>
 			  </tr>
@@ -394,19 +388,13 @@
           <td style="text-align: center;">
             <img src="projectimages/22/rudolf.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Symboli Rudolf
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/22/rudolfhead.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Symboli Rudolf Stuffed Animal
               </figcaption>
 				  </td>
 			  </tr>
@@ -417,10 +405,7 @@
           <td style="text-align: center;">
             <img src="projectimages/22/hybrid_rudolf.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Symboli Rudolg-Stuffed Animal Hybrid
               </figcaption>
 				  </td>
 			  </tr>
@@ -431,19 +416,13 @@
           <td style="text-align: center;">
             <img src="projectimages/22/cwl.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Crying While Laughing (CWL) Emoji
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/22/sob.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Sobbing Emoji
               </figcaption>
 				  </td>
 			  </tr>
@@ -454,10 +433,7 @@
           <td style="text-align: center;">
             <img src="projectimages/22/hybrid_sob.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                CWL-Sobbing Hybrid
               </figcaption>
 				  </td>
 			  </tr>
@@ -465,7 +441,8 @@
 
       <div id="reflection" class="reflection-wrapper">
         <p>
-          [Fourier Transforms]
+          Here is the process of creating a hybrid image of Symboli Rudolf and his 
+          stuffed animal-version from a frequency analysis perspective.
         </p>
       </div>
 
@@ -474,19 +451,13 @@
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/rudolf.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Log Magnitude of the Fouruer Transform of Symboli Rudolf
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/rudolfhead.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Log Magnitude of the Fouruer Transform of Symboli Rudolf's Stuffed Animal
               </figcaption>
 				  </td>
 			  </tr>
@@ -494,19 +465,13 @@
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/rudolf_aligned.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Symboli Rudolf aligned with the Stuffed Animal Head
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/rudolfhead_aligned.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Stuffed Animal Head aligned with Symboli Rudolf
               </figcaption>
 				  </td>
 			  </tr>
@@ -514,13 +479,15 @@
         <td style="text-align: center;">
           <img src="projectimages/22/logmag/logmag_im1.jpg" width="400px"/>
             <figcaption>
-              logmag of rudolf
+              Log Magnitude of the Fourier Transform of Symboli Rudolf
+
             </figcaption>
 				</td>
         <td style="text-align: center;">
           <img src="projectimages/22/logmag/logmag_lowim1.jpg" width="400px"/>
             <figcaption>
-              logmag of rudolf's low freq 
+                Log Magnitude of the Fourier Transform of low-passed Symboli Rudolf
+ 
             </figcaption>
 				  </td>
 			</tr>
@@ -528,13 +495,15 @@
         <td style="text-align: center;">
           <img src="projectimages/22/logmag/logmag_im2.jpg" width="400px"/>
             <figcaption>
-              logmag of rudolf head
+              Log Magnitude of the Fourier Transform of Symboli Rudolf's Stuffed Animal
+
             </figcaption>
 				</td>
         <td style="text-align: center;">
           <img src="projectimages/22/logmag/logmag_highim2.jpg" width="400px"/>
             <figcaption>
-              logmag of rudolf head's high freq 
+              Log Magnitude of the Fourier Transform of high-passed Symboli Rudolf's Stuffed Animal
+               
             </figcaption>
 				  </td>
 			</tr>
@@ -546,10 +515,8 @@
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/logmag_hybrid.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Log Magnitude of the Fourier Transform of hybrid Symboli Rudolf image.
+
               </figcaption>
 				  </td>
 			  </tr>
@@ -560,13 +527,13 @@
         <td style="text-align: center;">
           <img src="projectimages/22/logmag/low_image1.jpg" width="400px"/>
             <figcaption>
-              rudolf low
+              Low-passed Symboli Rudolf
             </figcaption>
 				</td>
         <td style="text-align: center;">
           <img src="projectimages/22/logmag/high_image2.jpg" width="400px"/>
             <figcaption>
-              rudolf high 
+              High-passed Symboli Rudolf Stuffed Animal 
             </figcaption>
 				  </td>
 			</tr>
@@ -577,10 +544,7 @@
           <td style="text-align: center;">
             <img src="projectimages/22/logmag/hybrid_rudolf.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Resulting Hybrid Image
               </figcaption>
 				  </td>
 			  </tr>
@@ -592,7 +556,11 @@
 
       <div id="reflection" class="reflection-wrapper">
         <p>
-          [explanation]
+          Gaussian and Laplacian stacks of images that are iteratively blurred with gaussian 
+          smoothing and the stack of the difference between each of the iterations, respectively. 
+          Using a mask, we can create fusions of images, which is illustrated in this recreation of 
+          Figure 3.42 (a) through (l) from "Computer Vision: Algorithms and Applications 2nd Edition" 
+          by Richard Szeliski.
         </p>
       </div>
 
@@ -601,28 +569,19 @@
           <td style="text-align: center;">
             <img src="projectimages/23/figure/apple_lap_left_0.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (a)
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/23/figure/orange_lap_right_0.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (b)
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/23/figure/oraple_lap_0.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                (c)
               </figcaption>
 				  </td>
 			  </tr>
@@ -630,28 +589,19 @@
           <td style="text-align: center;">
             <img src="projectimages/23/figure/apple_lap_left_2.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (d)
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/23/figure/orange_lap_right_2.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (e)
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/23/figure/oraple_lap_2.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                (f)
               </figcaption>
 				  </td>
 			  </tr>
@@ -659,28 +609,19 @@
           <td style="text-align: center;">
             <img src="projectimages/23/figure/apple_lap_left_4.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (g)
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/23/figure/orange_lap_right_4.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (h)
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/23/figure/oraple_lap_4.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                (i)
               </figcaption>
 				  </td>
 			  </tr>
@@ -688,28 +629,19 @@
           <td style="text-align: center;">
             <img src="projectimages/23/figure/apple_gauss_left_0.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (j)
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/23/figure/orange_gauss_right_0.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                (k)
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/23/figure/oraple_constructed_0.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                (l)
               </figcaption>
 				  </td>
 			  </tr>
@@ -717,6 +649,23 @@
 
       <h3>Part 2.4: Multiresolution Blending (a.k.a. the oraple!)</h3>
 
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here is the finalized "oraple" image, as well as other fusion images that 
+          I created with their respective masks.
+        </p>
+      </div>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="projectimages/23/figure/oraple_constructed_0.jpg" width="400px"/>
+              <figcaption>
+                Oraple
+              </figcaption>
+				  </td>
+			  </tr>
+      </table>
      
 
       <table style="width: 100%; text-align: center; border-collapse: collapse;">
@@ -724,28 +673,19 @@
           <td style="text-align: center;">
             <img src="projectimages/24/planewindow.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Picture looking outside plane window
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/24/skybox.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Stock sunset picture
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/24/planemask.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                Plane window mask
               </figcaption>
 				  </td>
 			  </tr>
@@ -756,10 +696,7 @@
           <td style="text-align: center;">
             <img src="projectimages/24/skybox_plane0.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Final image
               </figcaption>
 				  </td>
 			  </tr>
@@ -771,28 +708,19 @@
           <td style="text-align: center;">
             <img src="projectimages/24/pikachu.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Pikachu manhole cover in Yokohama
               </figcaption>
 				  </td>
           <td style="text-align: center;">
             <img src="projectimages/24/udon.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Udon not from Yokohama
               </figcaption>
 				  </td>
 				  <td style="text-align: center;">
 				    <img src="projectimages/24/pikachumask.jpg" width="400px"/>
               <figcaption>
-                "tobolsk" <br>
-                Green Offset: [3, 3] <br> 
-                Red Offset: [3, 6] <br>
-                Time to Align: ~0.3s
+                Manhole mask
               </figcaption>
 				  </td>
 			  </tr>
@@ -803,10 +731,7 @@
           <td style="text-align: center;">
             <img src="projectimages/24/pikachu_udon0.jpg" width="400px"/>
               <figcaption>
-                "monastery" <br>
-                Green Offset: [2, -3] <br> 
-                Red Offset: [2, 3] <br>
-                Time to Align: ~0.31s
+                Final image
               </figcaption>
 				  </td>
 			  </tr>
