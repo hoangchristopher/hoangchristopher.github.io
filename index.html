@@ -2,35 +2,276 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Hoang - Software Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- (Part 2: CSS, Question 0) Font import here. If you don't know what this is yet, don't worry, we cover this in the Part 2 of the homework.-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-
-    <title>Christopher Lam Hoang</title>
 </head>
 <body>
-        <!-- Part 1: Question 0. Add an image of yourself here. -->
-        <div id="portrait">
-            <img src="./assets/myface500.png">
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <div class="nav-brand">
+            <span>Christopher Hoang</span>
         </div>
-         
-        <h1>Christopher Hoang</h1>
-        <!-- Question 1. Add a unique id to each div that belongs to the class "section-wrapper".-->
-        <div class="project-wrapper">
-            <div id="projects" class="section-wrapper">
-                <h2>CS 180 - Intro to Computer Vision and Computational Photography</h2>
-                <!-- Question 3a. Copy-paste the div with the class experience-list-item twice, and fill them in with your work experiences. -->
-                <div class="experience-wrapper">
-                    <h3><a href="cs180/project0/index.html">Project 0 - Becoming Friends with Your Camera</a></h3>
-                    <h3><a href="cs180/project1/index.html">Project 1 - Images of the Russian Empire -- Colorizing the Prokudin-Gorskii Photo Collection</a></h3>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <!-- Mobile menu toggle (for bonus implementation) -->
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Christopher Hoang</h1>
+            <p class="hero-subtitle">Undergraduate @ University of California, Berkeley</p>
+            <p class="hero-tagline">Creating impactful software</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am a 3rd year Electrical Engineering and Computer Science student at UC Berkeley interest in fullstack software engineering.</p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📍</span>
+                            <span>Berkeley, CA</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">✉️</span>
+                            <a href="mailto:hoangchristopher@berkeley.edu">hoangchristopher@berkeley.edu</a>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📱</span>
+                            <span>Email me first 😉</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-availability">
+                    <h3>Currently Available For:</h3>
+                    <div class="availability-tags">
+                        <span class="tag tag-available">Freelance</span>
+                        <span class="tag tag-available">Full-Time</span>
+                        <span class="tag tag-available">Remote</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-alt">
+        <div class="container">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">⚛️</span>
+                        <h3 class="skill-name">React</h3>
+                    </div>
+                    <div class="skill-category">Frontend Framework</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="--skill-level: 90%"></div>
+                    </div>
+                    <span class="skill-percentage">90%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🎨</span>
+                        <h3 class="skill-name">CSS3</h3>
+                    </div>
+                    <div class="skill-category">Styling</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="--skill-level: 95%"></div>
+                    </div>
+                    <span class="skill-percentage">95%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">📱</span>
+                        <h3 class="skill-name">Responsive Design</h3>
+                    </div>
+                    <div class="skill-category">Design</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="--skill-level: 88%"></div>
+                    </div>
+                    <span class="skill-percentage">88%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🚀</span>
+                        <h3 class="skill-name">JavaScript</h3>
+                    </div>
+                    <div class="skill-category">Programming</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="--skill-level: 85%"></div>
+                    </div>
+                    <span class="skill-percentage">85%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🎯</span>
+                        <h3 class="skill-name">Figma</h3>
+                    </div>
+                    <div class="skill-category">Design Tools</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="--skill-level: 80%"></div>
+                    </div>
+                    <span class="skill-percentage">80%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-icon">🌐</span>
+                        <h3 class="skill-name">Node.js</h3>
+                    </div>
+                    <div class="skill-category">Backend</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="--skill-level: 75%"></div>
+                    </div>
+                    <span class="skill-percentage">75%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <img src="cs180/project1/projectimages/emirAligned[-24, -49][17, 57].png" alt="E-Commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                
+                                <a href="cs180/project1/" class="project-link">
+                                    <span>💻</span> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Images of the Russian Empire -- Colorizing the Prokudin-Gorskii Photo Collection</h3>
+                            <span class="project-category">Computer Vision</span>
+                        </div>
+                        <p class="project-description">Using image processing techniques to automatically produce color images from the Prokudin-Gorskii Photo Collection.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">NumPy</span>
+                            <span class="project-tag">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250/059669/ffffff?text=Weather+App" alt="Weather Dashboard">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <span>🔗</span> Live Demo
+                                </a>
+                                <a href="#" class="project-link">
+                                    <span>💻</span> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Fun with Filters and Frequencies</h3>
+                            <span class="project-category">Computer Vision</span>
+                        </div>
+                        <p class="project-description">Clean and intuitive weather dashboard with location search, 7-day forecast, and beautiful animations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in hearing about new opportunities and projects. Feel free to reach out!</p>
+
+                <form class="contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Christopher Hoang. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Dribbble</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+</html>
 </html>

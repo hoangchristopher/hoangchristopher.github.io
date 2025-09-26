@@ -1,184 +1,522 @@
-/* Question 0. Import a font and make all text in the body using that font. Check the homework instructions for more information!*/
-/* Set all text in the body to be a certain color (whatever color you choose!)*/
-/* Center all text in the body. Check out the homework spec for help.*/
+
+
+/* Week 5 Portfolio - Starter Styles
+   Students will transform this with Flexbox and Grid */
+
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Variables */
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    --bg-light: #f7fafc;
+    --bg-dark: #2d3748;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+
+    /* Typography */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-mono: 'Courier New', monospace;
+}
 
 body {
-    margin: 50px auto;
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--white);
+}
+
+/* Container */
+.container {
     max-width: 1200px;
-    font-family: 'Montserrat', sans-serif;
-    /* YOUR CODE HERE */
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
-/* Question 1: Add a border, border radius, box shadow, or whatever other styling you'd like to your image! */
-
-table {
-    margin: 50px auto;
+/* Section Styles */
+.section {
+    padding: var(--spacing-xl) 0;
 }
 
-h1 {
-    font-size: 45px;
-    transition: ease-in-out 0.5s;
-    text-align: center;
-    border-radius: 25px;
-    padding: 10px;
-    
+.section-alt {
+    background: var(--bg-light);
 }
 
-
-/* Question 2. Select the h1 tag and add a hover effect! You can change the background-color, color, opacity, or anything you want.*/
-
-/* YOUR CODE HERE */
-h1:hover {
-
-    box-shadow: 4px 5px 16px gray;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
 }
 
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
 
-
-
-/* Question 3. Add different background colors for all the different sections (Education, Experience, etc.) by selecting them via ids. */
-
-/* YOUR CODE HERE */
-
-#education {
-    box-shadow: 4px 5px 16px gray;
-    background-color: rgb(174, 221, 223);
+p {
+    margin-bottom: var(--spacing-sm);
 }
-
-#experience {
-    box-shadow: 4px 5px 16px gray;
-    background-color: rgb(164, 234, 181);
-}
-
-#projects {
-    box-shadow: 4px 5px 16px gray;
-    background-color: rgb(206, 164, 234);
-}
-
-#contact {
-    box-shadow: 4px 5px 16px gray;
-    background-color: rgb(234, 224, 164);
-}
-
-#reflection {
-    box-shadow: 4px 5px 16px gray;
-    background-color: rgb(246, 246, 246);
-
-    border-radius: 25px;
-    border: 2px solid rgb(174, 221, 223);
-    padding: 15px;
-    margin: 30px;
-
-}
-
-#portrait {
-    width: 175px;
-    border: 5px;
-    border-radius: 80%;
-    box-shadow: 4px 5px 16px gray;
-    justify-content: space-around;
-
-}
-
-
-
-/* Question 4. Add margin, padding, and borders to the section-wrapper class! */
-
-.section-wrapper {
-    background-color: #dfdfdf;
-    /*YOUR CODE HERE*/
-    padding: 30px;
-    margin: 30px;
-}
-
-.reflection-wrapper {
-    background-color: #dfdfdf;
-    padding: 10px;
-    margin: 30px;
-
-
-
-
-/* Experience Section */
-
-/* Question 5a. Use CSS Flexbox to display your experiences as shown in the diagram.
- Hint: Check the homework spec for some help!*/
-
-.experience-wrapper {
-    display: flex; /* YOUR CODE HERE */
-    gap: 40px; /*YOUR CODE HERE*/
-    justify-content: space-around; /*YOUR CODE HERE*/
-}
-
-/* Question 5b. Add a background color to the experience-list-item class.*/
-
-.experience-list-item {
-    border: 4px solid #1d3557;
-    text-align: center;
-    width: 250px;
-    padding: 10px 20px;
-    border-radius: 15px;
-    /*YOUR CODE HERE*/
-    background-color: rgb(190, 238, 202);
-
-    box-shadow: inset 0 0 0 0 rgb(98, 127, 105);
-    color: black;
-    margin: 0 -0.25rem;
-    padding: 0 -0.25rem;
-    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
-    /* Side note: the transition attribute makes effects look smoother! 
-    This means the hover effect will slowly kick in for 0.2s. */
-    transition: ease-in-out 0.2s;
-}
-
-
-
-/* Question 5c. Let's take a break! Add a hover effect to each experience-list-item div. 
-Experiment with border, border-radius, background-color, or whatever you want!*/
-
-.experience-list-item:hover {
-    box-shadow: inset 300px 0 0 0 rgb(97, 142, 109);
-    color: white;
-}
-
-
-
-
-/* Projects Section */
-
-/* Question 6. Use CSS Flexbox and hover effects for the Projects Section, just as you did for the Experience Section! */
-
-/*YOUR CODE HERE*/
-
-#projects {
-    box-shadow: inset 0 0 0 0 rgb(153, 122, 174);
-    color: black;
-
-    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-#projects:hover {
-    box-shadow: inset 1200px 0 0 0 rgb(120, 97, 136);
-    color: white;
-}
-
-/* Contact Section */
-
-/* Question 7. Make your link look something like the one shown in the homework spec!*/
 
 a {
-    /*YOUR CODE HERE*/
-    background-color: rgb(113, 166, 222);
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
+    color: var(--primary-color);
     text-decoration: none;
-    display: inline-block;
-    border-radius: 10px;
-    box-shadow: 4px 5px 16px gray;
+    transition: color 0.3s ease;
 }
 
-a:hover, a:active {
-    background-color: rgb(91, 126, 163);
+a:hover {
+    color: var(--secondary-color);
 }
+
+/* Navigation Bar - TO BE ENHANCED WITH FLEXBOX */
+#navbar {
+    
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: var(--spacing-sm) var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #667eea 0% #764ba2 100%);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+}
+
+
+.nav-menu li {
+    /*
+    display: inline-block;
+    margin-left: var(--spacing-md);
+    
+    */
+    display: inline-block;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+.nav-link {
+    color: var(--white);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+}
+
+/* Mobile Menu Toggle */
+.nav-toggle {
+    display: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--white);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section - TO BE ENHANCED WITH FLEXBOX */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: var(--spacing-xl) var(--spacing-md);
+    min-height: 60vh;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-bottom: var(--spacing-xs);
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+/* About Section - TO BE ENHANCED WITH GRID */
+.about-grid {
+    margin-top: var(--spacing-md);
+}
+
+.about-text {
+    margin-bottom: var(--spacing-md);
+}
+
+.about-details {
+    margin: var(--spacing-md) 0;
+}
+
+.detail-item {
+    margin-bottom: var(--spacing-sm);
+}
+
+.detail-icon {
+    margin-right: var(--spacing-xs);
+}
+
+.availability-tags {
+    margin-top: var(--spacing-sm);
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.tag-available {
+    background: #48bb78;
+    color: white;
+}
+
+/* Skills Section - TO BE TRANSFORMED WITH GRID */
+.skills-grid {
+    margin-top: var(--spacing-md);
+}
+
+.skill-card {
+    background: var(--white);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: var(--spacing-md);
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.skill-header {
+    margin-bottom: var(--spacing-sm);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    margin-right: var(--spacing-sm);
+}
+
+.skill-name {
+    display: inline;
+}
+
+.skill-category {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.skill-level {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: var(--spacing-sm) 0;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: var(--skill-level);
+    transition: width 1s ease;
+    animation: fillProgress 1s ease forwards;
+}
+
+@keyframes fillProgress {
+    from { width: 0; }
+    to { width: var(--skill-level); }
+}
+
+.skill-percentage {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Projects Section - TO BE ENHANCED WITH GRID */
+.projects-grid {
+    margin-top: var(--spacing-md);
+}
+
+.project-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: var(--spacing-md);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-links {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin: var(--spacing-xs);
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.project-content {
+    padding: var(--spacing-md);
+}
+
+.project-header {
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-title {
+    color: var(--text-dark);
+}
+
+.project-category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-light);
+    color: var(--text-light);
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.project-description {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-tags {
+    margin-top: var(--spacing-sm);
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-right: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Contact Form - TO BE ENHANCED WITH GRID */
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    margin-top: var(--spacing-md);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-dark);
+    color: var(--white);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.footer-content {
+    margin-bottom: var(--spacing-md);
+}
+
+.social-links {
+    margin-top: var(--spacing-md);
+}
+
+.social-link {
+    display: inline-block;
+    color: var(--white);
+    margin: 0 var(--spacing-sm);
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design - Basic */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.25rem; }
+
+    .section {
+        padding: var(--spacing-lg) 0;
+    }
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
