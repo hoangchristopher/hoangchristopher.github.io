@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <!-- (Part 2: CSS, Question 0) Font import here. If you don't know what this is yet, don't worry, we cover this in the Part 2 of the homework.-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+    <title>CS180 Project 0</title>
+</head>
+<body>  
+        <a href="../../index.html">← Return</a>
+        <h1>Project 2: Fun with Filters and Frequencies</h1>
+  
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            The Prokudin-Gorskii Photo Collection is a set of digitized glass plate images that are 
+            split into three different color channels: red, green, and blue. When aligning these 
+            three color channels and overlaying them atop one another, you can construct a full-color image. In this project, we will be 
+            exploring a few different ways of automating this process.
+          </p>
+        </div>
+        <h2>Part 1: Fun with Filters</h2>
+        <h3>Part 1.1: Convolutions From Scratch</h3>
+
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            The raw data from the collection contains images that show the three color channels 
+            stacked vertically. To separate the channels, we can represent the entire image file 
+            as a matrix of float values that correspond to each pixel. From there, 
+            we can use slicing techniques to split the matrix into three equal parts. However, a purely 
+            proportional approach to splitting these three channels and overlaying them on top of each 
+            other won't result in an appealing image. This is due to various things like the slight variance 
+            in each scene's color channels that stem from the entropy involved with taking three separate 
+            images, not lining up the three channels during the scanning process, etc.   
+          </p>
+          <p>
+            So, we need to employ a technique that will help us align each color channel optimally. The 
+            core of our approach with be searching over a window of possible displacements (i.e. [-15, 15] pixels in both the vertical and horizontal direction) 
+             for each color channel while using a scoring metric to determine which placement is the 
+            most optimal. The alignment process will have one color channel serve as the "anchor" that the 
+            other two will be aligned to. The first metric we'll try is the Euclidean Distance, which is the square root of the sum of the square 
+            differences between each pixel of the images. Since Euclidean Distance measures the distance between 
+            each pixel value, the displacement with the lowest resulting Euclidean Distance between a color 
+            channel and its anchor channel will be deemed the most optimal.
+          </p>
+          <p>
+            Also, at this point, we will use single-scale alignment. The "single-scale" here refers to only involving 
+            one scale of the respective image you are trying to align (we can see how this can be expanded on 
+            later). 
+          </p>
+          <p>
+            Here are the results of using Euclidean Distance with single-scale alignment to construct some 
+            full-color images from the Prokudin-Gorskii Photo Collection. Note: These images were aligned with 
+            the blue channel acting as the "anchor," unless stated otherwise.
+          </p>
+        </div>
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            Here are the results of using Euclidean Distance with single-scale alignment to construct some 
+            full-color images from the Prokudin-Gorskii Photo Collection. Note: These images were aligned with 
+            the blue channel acting as the "anchor," unless stated otherwise.
+          </p>
+        </div>
+        <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/eucmonasteryAligned[2, -3][2, 3].png" width="400px"/>
+				  <figcaption>
+            "monastery" <br>
+            Green Offset: [2, -3] <br> 
+            Red Offset: [2, 3] <br>
+            Time to Align: ~0.31s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/euctobolskAligned[3, 3][3, 6].png" width="400px"/>
+				  <figcaption>
+            "tobolsk" <br>
+            Green Offset: [3, 3] <br> 
+            Red Offset: [3, 6] <br>
+            Time to Align: ~0.3s
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
+
+        <h3>Cathedral - A special case</h3>
+      
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/euccathedralAligned[2, 5][2, 0].png" width="400px"/>
+				  <figcaption>
+            "cathedral" with incorrect color channel alignment <br> post-pre-processing implementation. <br> <br> <br> <br>
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/cathedralAligned[-2, -5][1, 7].png" width="400px"/>
+				  <figcaption>
+            "cathedral" <br>
+            Blue Offset: [-2, -5] <br> 
+            Red Offset: [1, 7] <br>
+            Time to Align: ~0.32s
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+            <p>
+              Here is an image titled "cathedral." When I initially implemented single-scale alignment 
+              without image pre-processing (cropping), the image came out pretty well. However, 
+              as I progressed through the assignment and implemented image pre-processing into the color 
+              channel alignment process, this altered the results of the "cathedral" image to look like the image on the left. However, this 
+              ended up being fixed by anchoring the image alignment to the green channel instead of the blue 
+              channel. The cropping of edge values in the image matrix must have resulted in an unexpected 
+              misrepresentation of where the "optimal" channel displacement due to different calculations.
+            </p>
+        </div>
+
+        
+
+
+      <h3>Part 1.2: Finite Difference Operator</h3>
+      <div id="reflection" class="reflection-wrapper">
+            <p>
+              With smaller images like the ones shown above, single-scale alignment is serviceable, 
+              as optimal pixel displacements aren't going to be too big. However, in the case of 
+              higher resolution glass plate scans, exhaustively searching to find a relatively 
+              larger pixel displacement is going to take a lot of time. To fix this, we can utilize 
+              multi-scale pyramid alignment, as opposed to single-scale alignment. Multi-scale 
+              pyramid alignment sees us constructing an "image pyramid," which is simply a collection 
+              of copies of a respective image that are iteratively downscaled. With the lower-resolution 
+              copies of the high-resolution image, we can quickly perform our alignment algorithms to 
+              receive an estimate of where the optimal displacement should be for the next, higher-resolution 
+              versions of the image.
+            </p>
+            <p>
+              For implementation specifics, we can recursively scale our image by 0.5 until its color 
+              channels have a height below 50 pixels. Then, we find the estimated optimal displacement 
+              on the smallest version of the image, and then return the result to the next highest resolution 
+              version of the image, which should be twice as big as the current level. Now at the next highest 
+              resolution, we scale the estimated optimal displacement by 2 (again, because we are now working 
+              with an image that is twice as big), and then run the alignment algorithm centered around this estimated 
+              optimal displacement. This saves us a lot of time and computing power because we already know that 
+              the optimal displacement should be in this region of the image, and we don't have to spend time 
+              looking anywhere else. From there, we repeat this process until we can finally run the alignment algorithm the full-resolution 
+              image. 
+            </p>
+            <p>
+              With this section of the project, I also implemented Normalized Cross-Correlation (NCC), an 
+              alignment method to use instead of Euclidean Distance. NCC involves takng the dot product between 
+              two normalized vectors, where the two vectors are vertical, 1-column, equivalents of the image 
+              matrices belonging to the image-to-be-aligned and anchor image respectively. Here, a higher resulting 
+              dot product correlates to better alignment.
+            </p>
+            <p>
+              Another thing I implemented to improve result quality was predefined border cropping. Given that 
+              the majority of these images have some type of somewhat solid-colored border, leaving these borders 
+              in during the alignment process would result in a fasely high correlation due to the matching borders 
+              (when we would rather find high correlation toward the middle of the image). To do this, I simply 
+              used slicing techniques to crop the outer 5% of each color channel after partitioning them from the 
+              source image.
+            </p>
+      </div>
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here are the results of using NCC with multi-scale pyramid alignment to construct some 
+          full-color images from the Prokudin-Gorskii Photo Collection. Note: These images were aligned with 
+          the blue channel acting as the "anchor," unless stated otherwise.
+        </p>
+      </div>
+      <h3>Part 1.3: Derivative of Gaussian (DoG) Filter</h3>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/churchAligned[0, 25][-4, 58].png" width="400px"/>
+				  <figcaption>
+            "church" <br>
+            Green Offset: [0, 25] <br> 
+            Red Offset: [-4, 58] <br>
+            Time to Align: ~39.13s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/harvestersAligned[16, 60][13, 124].png" width="400px"/>
+				  <figcaption>
+            "harvesters" <br>
+            Green Offset: [16, 60] <br> 
+            Red Offset: [13, 124] <br>
+            Time to Align: ~42.44s
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/iconAligned[17, 40][23, 89].png" width="400px"/>
+				  <figcaption>
+            "icon" <br>
+            Green Offset: [17, 40] <br> 
+            Red Offset: [23, 89] <br>
+            Time to Align: ~48.06s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/italilAligned[21, 38][35, 77].png" width="400px"/>
+				  <figcaption>
+            "italil" <br>
+            Green Offset: [21, 38] <br> 
+            Red Offset: [35, 77] <br>
+            Time to Align: ~47.59s
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/lastochikinoAligned[-1, -3][-8, 76].png" width="400px"/>
+				  <figcaption>
+            "lastochikino" <br>
+            Green Offset: [-1, 3] <br> 
+            Red Offset: [-8, 76] <br>
+            Time to Align: ~47.23s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/luganoAligned[-16, 41][-28, 92].png" width="400px"/>
+				  <figcaption>
+            "lugano" <br>
+            Green Offset: [-16, 41] <br> 
+            Red Offset: [-28, 92] <br>
+            Time to Align: ~48.15s
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/melonsAligned[8, 82][12, 178].png" width="400px"/>
+				  <figcaption>
+            "melons" <br>
+            Green Offset: [8, 82] <br> 
+            Red Offset: [12, 178] <br>
+            Time to Align: ~48.13s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/self_portraitAligned[28, 78][36, 176].png" width="400px"/>
+				  <figcaption>
+            "self_portrait" <br>
+            Green Offset: [28, 78] <br> 
+            Red Offset: [36, 176] <br>
+            Time to Align: ~49.14s
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/sirenAligned[-7, 49][-25, 95].png" width="400px"/>
+				  <figcaption>
+            "siren" <br>
+            Green Offset: [-7, 49] <br> 
+            Red Offset: [-25, 95] <br>
+            Time to Align: ~49.20s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/three_generationsAligned[11, 54][9, 112].png" width="400px"/>
+				  <figcaption>
+            "three_generations" <br>
+            Green Offset: [11, 54] <br> 
+            Red Offset: [9, 112] <br>
+            Time to Align: ~47.74s
+          </figcaption>
+				</td>
+        </tr>
+        <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/pyramonasteryAligned[2, -3][2, 3].png" width="400px"/>
+				  <figcaption>
+            "monastery" <br>
+            Green Offset: [2, -3] <br> 
+            Red Offset: [2, 3] <br>
+            Time to Align: ~0.17s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/pyratobolskAligned[3, 3][3, 6].png" width="400px"/>
+				  <figcaption>
+            "tobolsk" <br>
+            Green Offset: [3, 3] <br> 
+            Red Offset: [3, 6] <br>
+            Time to Align: ~0.20s
+          </figcaption>
+				</td>
+        </tr>
+        
+			</table>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+				<td style="text-align: center;">
+				  <img src="projectimages/pyracathedralAligned[-2, -5][1, 7].png" width="400px"/>
+				  <figcaption>
+            "cathedral" <br>
+            Blue Offset: [-2, -5] <br> 
+            Red Offset: [1, 7] <br>
+            Time to Align: ~0.19s
+          </figcaption>
+				</td>
+        </tr>
+      </table>
+
+
+      
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/emirAligned[24, 49][-1159, 0].png" width="400px"/>
+				  <figcaption>
+            "emir" with incorrect color channel alignment. <br> <br> <br> <br>
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/emirAligned[-24, -49][17, 57].png" width="400px"/>
+				  <figcaption>
+            "emir" <br>
+            Blue Offset: [-24, -49] <br> 
+            Red Offset: [17, 57] <br>
+            Time to Align: ~40.22s
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            Here is an image titled "emir." When implementing the project's specifications and 
+            compiling the results, "emir" would always come out incorrect. 
+            The "optimal" final displacement would always balloon and result in a final image 
+            that looked like the left image. However, I was able to fix this by anchoring 
+            the alignment process to the green channel of "emir," which resulted in the image 
+            on the right. This is most likely due to the different brightness levels of each 
+            color channel causing NCC metric to behave unexpectedly when anchored on certain channels 
+            when compared to others. 
+        </p>
+      </div>
+
+      <h2>Part 2: Fun with Frequencies!</h2>
+
+      <h3>Part 2.1: Image "Sharpening"</h3>
+      <p>Here are some results of aligning other .tif files found on the online Prokudin-Gorskii Collection.</p>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/stainedglassAligned[16, 20][18, 59].png" width="400px"/>
+				  <figcaption>
+            "Zaprestol'nyĭ obraz v t︠s︡erkvi Īoanna Bogoslova" <br>
+            Green Offset: [16, 20] <br> 
+            Red Offset: [18, 59] <br>
+            Time to Align: ~39.00s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/brickstreamAligned[24, 27][49, 46].png" width="400px"/>
+				  <figcaption>
+            "Irrigation canal (aryk) in the Murgab Estate" <br>
+            Green Offset: [24, 27] <br> 
+            Red Offset: [49, 46] <br>
+            Time to Align: ~42.16s
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/lakesideAligned[21, 68][43, 163].png" width="400px"/>
+				  <figcaption>
+            "Materiki. Ėti︠u︡d." <br>
+            Green Offset: [21, 68] <br> 
+            Red Offset: [43, 163] <br>
+            Time to Align: ~42.03s
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/clothAligned[-10, 46][-31, 93].png" width="400px"/>
+				  <figcaption>
+            "Display of embroidered cloth and woven sashes" <br>
+            Green Offset: [-10, -46] <br> 
+            Red Offset: [-31, 93] <br>
+            Time to Align: ~39.379s
+          </figcaption>
+				</td>
+			  </tr>
+
+      <h3>Part 2.2: Hybrid Images</h3>
+      <h3>Part 2.3: Gaussian and Laplacian Stacks</h3>
+      <h3>Part 2.4: Multiresolution Blending (a.k.a. the oraple!)</h3>
+
+      </table>
+
+</html>
