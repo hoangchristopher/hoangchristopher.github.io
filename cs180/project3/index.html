@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- (Part 2: CSS, Question 0) Font import here. If you don't know what this is yet, don't worry, we cover this in the Part 2 of the homework.-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+    <title>CS180 Project 0</title>
+</head>
+<body>  
+        <a href="../../index.html">← Return</a>
+        <h1>Project 3: (Auto)Stitching Photo Mosaics</h1>
+  
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            In this project, we will be exploring how to create picture mosaics autonomously.
+          </p>
+        </div>
+
+
+        <h2>Image Warping and Mosaicing</h2>
+        <h3>A.1: Shoot the Pictures</h3>
+
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            Here are 2 sets of images with projective transformations between them 
+            (fixed center of projection, rotated camera).
+          </p>
+        </div>
+
+
+        <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/a1/fulldef/plazaLeft.jpg" width="400px"/>
+				  <figcaption>
+            Left Picture of Plaza
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/a1/fulldef/plazaRight.jpg" width="400px"/>
+				  <figcaption>
+            Right Picture of Plaza
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/a1/creekLeft.jpg" width="400px"/>
+				  <figcaption>
+            Left Picture of Creek
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/a1/creekRight.jpg" width="400px"/>
+				  <figcaption>
+            Right Picture of Creek
+            
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
+
+      
+          
+       
+      
+
+
+      <h3>A.2: Recover Homographies</h3>
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here are the correspondances for each image set visualized.
+        </p>
+      </div>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/a2/plazaLeft_dots.jpg" width="400px"/>
+				  <figcaption>
+            Left Picture of Plaza with <br>Correspondances Labeled
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/a2/plazaRight_dots.jpg" width="400px"/>
+				  <figcaption>
+            Right Picture of Plaza with <br>Correspondances Labeled
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/a2/creekLeft_dots.jpg" width="400px"/>
+				  <figcaption>
+            Left Picture of Creek with <br>Correspondances Labeled
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/a2/creekRight_dots.jpg" width="400px"/>
+				  <figcaption>
+            Right Picture of Creek with <br>Correspondances Labeled
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          As for the homographies, we will solve for them using this system of equations where a point (x, y) on the "before" image corresponds to a point (u, v) on the "after" image. The resulting vector, when reshaped to 3x3 with the element in the 3rd row and 3rd column equalling a constant scaling factor, will give us our 3x3 homography matrix.
+        </p>
+      </div>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/a2/soe.png" width="400px"/>
+				  <figcaption>
+            System of Equations
+          </figcaption>
+				</td>
+        <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/a2/plazaMatrix.png" width="400px"/>
+				  <figcaption>
+            Recovered Homography Matrix for the Plaza Images
+          </figcaption>
+				</td>
+				
+			  </tr>
+      </table>
+
+     
+      <h3>A.3: Warp the Images</h3>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here are some examples of rectification on example images using both 
+          nearest neighbor and bilinear interpolation for image warping.
+        </p>
+      </div>
+
+      
+
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="projectimages/a3/phong_rectified.jpg" width="200px"/>
+              <figcaption>
+                Here is a picture of a computer screen taken from an angle.
+              </figcaption>
+				  </td>
+          <td style="text-align: center;">
+            <img src="projectimages/a3/rectified_phong_nn_rectified.jpg" width="200px"/>
+              <figcaption>
+                Here is the rectification on the computer screen <br>using nearest neighbor interpolation.
+              </figcaption>
+				  </td>
+				  <td style="text-align: center;">
+				    <img src="projectimages/a3/rectified_phong_bi_rectified.jpg" width="200px"/>
+              <figcaption>
+                Here is the rectification on the computer screen <br>using bilinear interpolation.
+              </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="projectimages/a3/plaza_left_rectified.jpg" width="200px"/>
+              <figcaption>
+                Here is a picture chair in the plaza.
+              </figcaption>
+				  </td>
+          <td style="text-align: center;">
+            <img src="projectimages/a3/rectified_chair_nn_rectified.jpg" width="200px"/>
+              <figcaption>
+                Here is the rectification on the chair using nearest neighbor interpolation.
+                
+              </figcaption>
+				  </td>
+				  <td style="text-align: center;">
+				    <img src="projectimages/a3/rectified_chair_bi_rectified.jpg" width="200px"/>
+              <figcaption>
+                Here is the rectification on the chair using bilinear interpolation.
+              </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          The difference in interpolation techniques can best be seen in red color of the chair. Specifically, with how defined and distict the patches of the various shades of red are in the nearest neighbors image compared to the bilinear one.
+        </p>
+      </div>
+
+   
+      <h3>A.4: Blend the Images into a Mosaic"</h3>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          To blend two images together, I first computed the homography 
+          required to warp the correspondances from the first image to the second image. Then, I used this 
+          homography to warp the first image. From there, I created a mask that follows the new shape of the 
+          warped first image, and then used a Laplacian pyramid to blend the warped first image and the second image.
+        </p>
+      </div>
+
+      <div id="reflection" class="reflection-wrapper">
+        <p>
+          Here are 3 mosaics with their source images:
+        </p>
+      </div>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="projectimages/a1/plazaLeft.jpg" width="200px"/>
+              <figcaption>
+                Left Plaza Image
+              </figcaption>
+				  </td>
+          <td style="text-align: center;">
+            <img src="projectimages/a1/plazaRight.jpg" width="200px"/>
+              <figcaption>
+                Right Plaza Image
+              </figcaption>
+				  </td>
+				  <td style="text-align: center;">
+				    <img src="projectimages/a4/blended_plaza.jpg" width="200px"/>
+              <figcaption>
+                Plaza Mosaic
+              </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="projectimages/a4/rockLeft.jpg" width="200px"/>
+              <figcaption>
+                Left Rock Image
+              </figcaption>
+				  </td>
+          <td style="text-align: center;">
+            <img src="projectimages/a4/rockRight.jpg" width="200px"/>
+              <figcaption>
+                Right Rock Image
+              </figcaption>
+				  </td>
+				  <td style="text-align: center;">
+				    <img src="projectimages/a4/blended_rock.jpg" width="200px"/>
+              <figcaption>
+                Rock Mosaic
+              </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="projectimages/a1/creekLeft.jpg" width="200px"/>
+              <figcaption>
+                Left Creek Image
+              </figcaption>
+				  </td>
+          <td style="text-align: center;">
+            <img src="projectimages/a1/creekRight.jpg" width="200px"/>
+              <figcaption>
+                Right Creek Image
+              </figcaption>
+				  </td>
+				  <td style="text-align: center;">
+				    <img src="projectimages/a4/blended_creek.jpg" width="200px"/>
+              <figcaption>
+                Creek Mosaic
+              </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+
+
+
+      
+
+      
+
+      
+
+</body>
+</html>
