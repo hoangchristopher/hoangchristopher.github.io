@@ -158,8 +158,18 @@
     <section id="projects" class="section">
         <div class="container">
             <h2>Featured Projects</h2>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="webapp">Web App</button>
+                <button class="filter-btn" data-filter="cv">Computer Vision</button>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card featured">
+                <div class="project-card featured" data-category="cv">
                     <div class="project-image">
                         <img src="cs180/project1/projectimages/emirAligned[-24, -49][17, 57].png" alt="emir">
                         <div class="project-overlay">
@@ -184,13 +194,14 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="cv">
                     <div class="project-image">
                         <img src="cs180/project2/projectimages/24/oraple_constructed_0.jpg" alt="oraple image">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="cs180/project2/" class="project-link">
                                     <span>💻</span> View
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -208,13 +219,14 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="cv">
                     <div class="project-image">
                         <img src="cs180/project3/projectimages/24/oraple_constructed_0.jpg" alt="oraple image">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="cs180/project3/" class="project-link">
                                     <span>💻</span> View
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -247,7 +259,7 @@
             <div class="contact-content">
                 <p>I'm always interested in hearing about new opportunities and projects. Feel free to reach out!</p>
 
-                <form class="contact-form">
+                <form id="contact-form"class="contact-form">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="name">Name *</label>
@@ -292,6 +304,6 @@
             </div>
         </div>
     </footer>
+<script src="script.js"></script>
 </body>
-</html>
 </html>
