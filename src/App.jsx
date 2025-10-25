@@ -299,7 +299,7 @@ function App() {
     <section id="about" className="section">
         <div className="container">
             <div className="about-grid">
-                <img className="about-image" src="assets/myface500.png"/>
+                <img className="about-image" src="myface500.png" alt="portrait"/>
 
                 <div className="about-text">
                     <h2>About Me</h2>
