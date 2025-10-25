@@ -429,10 +429,10 @@ function App() {
             <div className="projects-grid">
                 <div className="project-card featured" data-category="cv">
                     <div className="project-image">
-                        <img src="cs180/project1/projectimages/emirAligned[-24, -49][17, 57].png" alt="emir"/>
+                        <img src="/cs180/project1/projectimages/emirAligned[-24, -49][17, 57].png" alt="emir"/>
                         <div className="project-overlay">
                             <div className="project-links">
-                                <a href="cs180/project1/" className="project-link">
+                                <a href="/cs180/project1/index.html" className="project-link">
                                     <span>💻</span> View
                                 </a>
                             </div>
@@ -454,10 +454,10 @@ function App() {
 
                 <div className="project-card" data-category="cv">
                     <div className="project-image">
-                        <img src="cs180/project2/projectimages/24/oraple_constructed_0.jpg" alt="oraple image"/>
+                        <img src="/cs180/project2/projectimages/24/oraple_constructed_0.jpg" alt="oraple image"/>
                         <div className="project-overlay">
                             <div className="project-links">
-                                <a href="cs180/project2/" className="project-link">
+                                <a href="/cs180/project2/index.html" className="project-link">
                                     <span>💻</span> View
                                 </a>
                             </div>
@@ -479,10 +479,10 @@ function App() {
 
                 <div className="project-card" data-category="cv">
                     <div className="project-image">
-                        <img src="cs180/project3/projectimages/b4/plaza_mosaic_1000.jpg" alt="oraple image"/>
+                        <img src="/cs180/project3/projectimages/b4/plaza_mosaic_1000.jpg" alt="oraple image"/>
                         <div className="project-overlay">
                             <div className="project-links">
-                                <a href="cs180/project3/" className="project-link">
+                                <a href="/cs180/project3/index.html" className="project-link">
                                     <span>💻</span> View
                                 </a>
                             </div>
