@@ -303,7 +303,10 @@ function App() {
 
                 <div className="about-text">
                     <h2>About Me</h2>
-                    <p>I am a 3rd year Electrical Engineering and Computer Science student at UC Berkeley interest in fullstack software engineering.</p>
+                    <p>
+                        I am a 3rd year Electrical Engineering and Computer Science student at UC Berkeley interested in fullstack 
+                        software engineering currently involved in visual computing research!
+                    </p>
                     <div className="about-details">
                         <div className="detail-item">
                             <span className="detail-icon">📍</span>
@@ -313,16 +316,12 @@ function App() {
                             <span className="detail-icon">✉️</span>
                             <a href="mailto:hoangchristopher@berkeley.edu">hoangchristopher@berkeley.edu</a>
                         </div>
-                        <div className="detail-item">
-                            <span className="detail-icon">📱</span>
-                            <span>Email me first 😉</span>
-                        </div>
                     </div>
                     <div className="about-availability">
                     <h3>Currently Available For:</h3>
                     <div className="availability-tags">
                         <span className="tag tag-available">Freelance</span>
-                        <span className="tag tag-available">Full-Time</span>
+                        <span className="tag tag-available">Internships</span>
                         <span className="tag tag-available">Remote</span>
                     </div>
                 </div>
@@ -424,6 +423,7 @@ function App() {
                 <button className="filter-btn" data-filter="design" onClick={handleFilterClick}>Design</button>
                 <button className="filter-btn" data-filter="webapp" onClick={handleFilterClick}>Web App</button>
                 <button className="filter-btn" data-filter="cv" onClick={handleFilterClick}>Computer Vision</button>
+                <button className="filter-btn" data-filter="computergraphics" onClick={handleFilterClick}>Computer Graphics</button>
             </div>
 
             <div className="projects-grid">
@@ -498,6 +498,54 @@ function App() {
                             <span className="project-tag">Python</span>
                             <span className="project-tag">NumPy</span>
                             <span className="project-tag">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="project-card" data-category="computergraphics">
+                    <div className="project-image">
+                        <img src="/cs184/raytracer/projectimages/CBbunny_direct_s1024_m5_l4_o1.png" alt="CB_bunny"/>
+                        <div className="project-overlay">
+                            <div className="project-links">
+                                <a href="/cs184/raytracer/index.html" className="project-link">
+                                    <span>💻</span> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="project-content">
+                        <div className="project-header">
+                            <h3 className="project-title">Physically-based Ray Tracer</h3>
+                            <span className="project-category">Computer Graphics</span>
+                        </div>
+                        <p className="project-description">Calculating billions of light rays to generate beautiful scenes.</p>
+                        <div className="project-tags">
+                            <span className="project-tag">C++</span>
+                            <span className="project-tag">OpenGL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="project-card" data-category="computergraphics">
+                    <div className="project-image">
+                        <img src="/cs184/clothsim/images/part3_ks500.png" alt="CB_bunny"/>
+                        <div className="project-overlay">
+                            <div className="project-links">
+                                <a href="/cs184/clothsim/index.html" className="project-link">
+                                    <span>💻</span> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="project-content">
+                        <div className="project-header">
+                            <h3 className="project-title">Cloth Simulator</h3>
+                            <span className="project-category">Computer Graphics</span>
+                        </div>
+                        <p className="project-description">Simulating the behavior of cloth with math and physics!</p>
+                        <div className="project-tags">
+                            <span className="project-tag">C++</span>
+                            <span className="project-tag">OpenGL</span>
                         </div>
                     </div>
                 </div>
