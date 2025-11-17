@@ -550,7 +550,29 @@ function App() {
                     </div>
                 </div>
 
-
+                <div className="project-card" data-category="computervision">
+                    <div className="project-image">
+                        <img src="/cs180/project4/projectimages/00//above.png" alt="frustum dome"/>
+                        <div className="project-overlay">
+                            <div className="project-links">
+                                <a href="/cs180/project4/index.html" className="project-link">
+                                    <span>💻</span> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="project-content">
+                        <div className="project-header">
+                            <h3 className="project-title">Cloth Simulator</h3>
+                            <span className="project-category">Computer Graphics</span>
+                        </div>
+                        <p className="project-description">Simulating the behavior of cloth with math and physics!</p>
+                        <div className="project-tags">
+                            <span className="project-tag">C++</span>
+                            <span className="project-tag">OpenGL</span>
+                        </div>
+                    </div>
+                </div>
                 
 
                 
