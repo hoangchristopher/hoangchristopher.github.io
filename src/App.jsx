@@ -563,13 +563,14 @@ function App() {
                     </div>
                     <div className="project-content">
                         <div className="project-header">
-                            <h3 className="project-title">Cloth Simulator</h3>
-                            <span className="project-category">Computer Graphics</span>
+                            <h3 className="project-title">Neural Radiance Fields</h3>
+                            <span className="project-category">Computer Vision</span>
                         </div>
-                        <p className="project-description">Simulating the behavior of cloth with math and physics!</p>
+                        <p className="project-description">Generating novel views of 3D scenes using neural networks.</p>
                         <div className="project-tags">
-                            <span className="project-tag">C++</span>
-                            <span className="project-tag">OpenGL</span>
+                            <span className="project-tag">Python</span>
+                            <span className="project-tag">NumPy</span>
+                            <span className="project-tag">OpenCV</span>
                         </div>
                     </div>
                 </div>
