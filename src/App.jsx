@@ -574,6 +574,33 @@ function App() {
                         </div>
                     </div>
                 </div>
+
+
+
+                <div className="project-card" data-category="cv">
+                    <div className="project-image">
+                        <img src="/cs180/project5/projectimages/16/2.png" alt="oraple image"/>
+                        <div className="project-overlay">
+                            <div className="project-links">
+                                <a href="/cs180/project5/index.html" className="project-link">
+                                    <span>💻</span> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="project-content">
+                        <div className="project-header">
+                            <h3 className="project-title">Fun With Diffusion Models [WIP]</h3>
+                            <span className="project-category">Computer Vision</span>
+                        </div>
+                        <p className="project-description">Exploring the use and training of diffusion models.</p>
+                        <div className="project-tags">
+                            <span className="project-tag">Python</span>
+                            <span className="project-tag">PyTorch</span>
+                            <span className="project-tag">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
                 
 
                 
