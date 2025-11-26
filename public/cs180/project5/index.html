@@ -26,7 +26,84 @@
           </p>
         </div>
 
+        <h2>Part 0: Step</h2>
+        <div id="reflection" class="reflection-wrapper">
+          <p>
+            My text prompts are: ['an oil painting of a snowy mountain village',
+            'a photo of the amalfi cost',
+            'a photo of a man',
+            'a photo of a hipster barista',
+            'a photo of a dog',
+            'an oil painting of people around a campfire',
+            'an oil painting of an old man',
+            'a lithograph of waterfalls',
+            'a lithograph of a skull',
+            'a man wearing a hat',
+            'a high quality photo',
+            '',
+            'a rocket ship',
+            'a pencil'].
 
+            My seed is 100.
+          </p>
+        </div>
+
+
+        <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/00/almafi_cost_20.png" width="400px"/>
+				  <figcaption>
+            'a photo of the amalfi cost' with 20 inference steps
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/00/almafi_cost_100.png" width="400px"/>
+				  <figcaption>
+            'a photo of the amalfi cost' with 100 inference steps
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/00/campfire_oil_20.png" width="400px"/>
+				  <figcaption>
+            'an oil painting of people around a campfire' with 20 inference steps
+          </figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="projectimages/00/campfire_oil_100.png" width="400px"/>
+				  <figcaption>
+            'an oil painting of people around a campfire' with 100 inference steps
+          </figcaption>
+				</td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/00/lithograph_waterfall_20.png" width="400px"/>
+				  <figcaption>
+            'a lithograph of waterfalls' with 20 inference steps
+          </figcaption>
+				  </td>
+          <td style="text-align: center;">
+				  <img src="projectimages/00/lithograph_waterfall_100.png" width="400px"/>
+				  <figcaption>
+            'a lithograph of waterfalls' with 100 inference steps
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            Inspecting all of these results, we can see that each image is a pretty solid representation of their associated 
+            prompt. One thing we can notice is that as the number of inference steps increase, the detail also starts to increase 
+            in the resulting image. This is especially noticable with the prompt 'a photo of the amalfi cost', and how it's 
+            buildings are much more intricate.
+          </p>
+        </div>
+      
         <h2>Part 1: Sampling Loops</h2>
 
         <div id="reflection" class="reflection-wrapper">
