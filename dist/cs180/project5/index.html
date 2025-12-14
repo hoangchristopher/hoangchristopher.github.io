@@ -865,8 +865,250 @@
 			  </tr>
       </table>
 
+      <h2>Part B</h2>
+      <h2>Part 1: Training a Single-Step Denoising UNet</h2>
+      <h3>1.1 Implementing the UNet</h3>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/unconditional_arch.png" width="400px"/>
+				  <figcaption>
+            Using PyTorch, I implemented this UNet, along with it's required operations.
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
 
-    
+      <h3>1.2 Using the UNet to Train a Denoiser</h3>
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            Here is a visualization of the noising process using various sigma values.
+          </p>
+      </div>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b12/00.png" width="400px"/>
+				  <figcaption>
+            The noising process.
+          </figcaption>
+				</td>
+			  </tr>
+      </table>
+
+      <h4>1.2.1 Training</h4>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b121/loss_curve_temp.png" width="400px"/>
+				  <figcaption>
+            Training loss curve plot with a sigma value of 0.5.
+          </figcaption>
+				  </td>
+          <td style="text-align: center;">
+				  <img src="projectimages/b121/loss_curve_temp.png" width="400px"/>
+				  <figcaption>
+            Sample results.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <h4>1.2.2 Out-of-Distribution Testing</h4>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b122/ood_results.png" width="400px"/>
+				  <figcaption>
+            Sample results on out-of-distribution noise levels with various sigma values.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <h4>1.2.3 Denoising Pure Noise</h4>
+
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b123/loss_curve.png" width="400px"/>
+				  <figcaption>
+            Training loss curve plot with a sigma value of 0.5.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b123/1_epoch.png" width="400px"/>
+				  <figcaption>
+            Results on pure noise after 1 epoch.
+          </figcaption>
+				  </td>
+          <td style="text-align: center;">
+				  <img src="projectimages/b123/5_epochs.png" width="400px"/>
+				  <figcaption>
+            Results on pure noise after 5 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            Overall, as we continue to train, we see that the model is learning that images 
+            should generally look less like noise.
+            However, we can see a patch of pixels that aren't "smooth" after 5 epochs. 
+            This could potentially be due to spatial bias in the dataset, with subjects in our training images 
+            roughly being centered, but slightly offset. So, the model could be learning that certain regions constistently
+             exhibit higher-frequency content. This could then manifest iteself the patch of high frequency pixels when evaluated on OOD noise, 
+             as it has learned that subjects are usually placed in that region.
+
+          </p>
+      </div>
+
+      <h2>Part 2: Training a Flow Matching Model</h2>
+      <h3>2.1 Adding Time Conditioning to UNet</h3>
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            To add time conditioning to a UNET, we need to implement a new operater called an 
+            FCBlock (fully-connected block) that is used to inject the conditioning signal into the UNet. 
+
+          </p>
+      </div>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/fc_long.png" width="400px"/>
+				  <figcaption>
+            FCBlock for conditioning
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <h3>2.2 Training the UNet</h3>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b22/loss_curve.png" width="400px"/>
+				  <figcaption>
+            Training loss curve plot for the time-conditioned UNet over the whole training process.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <h3>2.3 Sampling from the UNet</h3>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b23/1.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the time-conditioned UNet for 1 epoch.
+          </figcaption>
+				  </td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b23/5.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the time-conditioned UNet for 5 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b23/10.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the time-conditioned UNet for 10 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <h3>2.4 Adding Class-Conditioning to UNet</h3>
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            We can add class-conditioning to the UNet using a one-hot class-conditioning vector.
+          </p>
+      </div>
+
+      <h3>2.5 Training the Class-Conditioned UNet</h3>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b25/loss_curve_class.png" width="400px"/>
+				  <figcaption>
+            Training loss curve plot for the class-conditioned UNet over the whole training process.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <h3>2.6 Sampling from the Class-Conditioned UNet</h3>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b26/1.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the class-conditioned UNet for 1 epoch.
+          </figcaption>
+				  </td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b26/5.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the class-conditioned UNet for 5 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b26/10.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the class-conditioned UNet for 10 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
+      <div id="reflection" class="reflection-wrapper">
+          <p>
+            Since class-conditioning allows us to converge facter, we can also remove the learning rate scheduler. 
+            In order to compensate for the loss of the scheduler can lower our constant learning rate by a factor of 10 (from 1e-2->1e-3).
+          </p>
+      </div>
+      <table style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b26/1_after.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the class-conditioned UNet for 1 epoch.
+          </figcaption>
+				  </td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b26/5_after.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the class-conditioned UNet for 5 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+        <tr>
+          <td style="text-align: center;">
+				  <img src="projectimages/b26/10_after.png" width="400px"/>
+				  <figcaption>
+            Sampling results from the class-conditioned UNet for 10 epochs.
+          </figcaption>
+				  </td>
+			  </tr>
+      </table>
+
 
 
 </body>
