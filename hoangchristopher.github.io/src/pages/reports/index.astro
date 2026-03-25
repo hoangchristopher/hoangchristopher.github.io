@@ -1,0 +1,33 @@
+---
+import CategoryBar from "@components/features/posts/CategoryBar.astro";
+import PostPage from "@components/features/posts/PostPage.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+
+import { siteConfig } from "../../config";
+import { getSortedPosts } from "../../utils/content-utils";
+import { initPostIdMap } from "../../utils/permalink-utils";
+import { getCollection } from "astro:content";
+
+const showCategoryBar = siteConfig.postListLayout.categoryBar?.enable ?? false;
+
+// get all reports
+const reports = await getCollection("reports");
+
+// filter ONLY reports
+const reportPosts = reports.filter((r) => !r.data.draft);
+
+// important: keep permalink system working
+initPostIdMap(reportPosts);
+
+// manually create a "page" object that PostPage expects
+const page = {
+	data: reportPosts,
+};
+
+const len = page.data.length;
+---
+
+<MainGridLayout>
+	{showCategoryBar && <CategoryBar />}
+	<PostPage page={page} />
+</MainGridLayout>
