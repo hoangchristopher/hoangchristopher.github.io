@@ -66,7 +66,7 @@ export const siteConfig: SiteConfig = {
 	// Page auto-zoom configuration
 	pageScaling: {
 		enable: true, // Whether to enable automatic scaling
-		targetWidth: 2000, // Target width below which scaling begins
+		targetWidth: 1400, // Target width below which scaling begins
 	},
 
 	bangumi: {
@@ -609,8 +609,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// Sidebar component layout configuration
 	components: {
-		left: ["profile", "announcement", "tags", "card-toc"],
-		right: ["site-stats", "calendar", "categories", "music-sidebar"],
+		left: ["profile", "announcement", "music-sidebar", "card-toc"],
+		right: [],
 		drawer: [
 			"profile",
 			"announcement",
@@ -638,8 +638,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			mobile: 768,
 			// Tablet breakpoint: screen width less than 1280px
 			tablet: 1280,
-			// Desktop breakpoint: screen width is greater than or equal to 1280px
-			desktop: 1280,
+			// Desktop breakpoint: screen width is greater than or equal to 1440px
+			desktop: 1440,
 		},
 	},
 };
