@@ -80,7 +80,7 @@ export const projectsData: Project[] = [
 		visitUrl: "/reports/clothsim/",
 		startDate: "2024-05-15",
 		endDate: "2024-05-15",
-		featured: true,
+		featured: false,
 		tags: ["Computer Graphics", "Physics Simulation", "UC Berkeley"],
 	},
 	{

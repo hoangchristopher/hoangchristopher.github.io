@@ -163,7 +163,7 @@ export const siteConfig: SiteConfig = {
 
 		homeText: {
 			enable: true, // Display custom text on home page
-			title: "Hi, nice to meet you!", // Home Page Banner Main Title
+			title: "Christopher Hoang", // Home Page Banner Main Title
 
 			subtitle: [
 				"Software Engineer",
@@ -309,16 +309,16 @@ export const navBarConfig: NavBarConfig = {
 					icon: "fa7-brands:github",
 				},
 				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
+					name: "X (Twitter)",
+					url: "https://x.com/hoangclam",
 					external: true,
-					icon: "fa7-brands:bilibili",
+					icon: "fa7-brands:x-twitter",
 				},
 				{
-					name: "Gitee",
-					url: "https://gitee.com/matsuzakayuki/Mizuki",
+					name: "Instagram",
+					url: "https://www.instagram.com/xqchris/",
 					external: true,
-					icon: "mdi:git",
+					icon: "fa7-brands:instagram",
 				},
 			],
 		},
@@ -350,6 +350,7 @@ export const navBarConfig: NavBarConfig = {
 				},
 			],
 		},
+		/*
 		{
 			name: "About",
 			url: "/content/",
@@ -367,6 +368,7 @@ export const navBarConfig: NavBarConfig = {
 				},
 			],
 		},
+		*/
 		{
 			name: "Archive",
 			url: "/archive/",
