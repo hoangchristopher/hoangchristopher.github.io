@@ -257,7 +257,7 @@ export const en: Translation = {
 	[Key.timelineYears]: "years",
 	[Key.timelineTotal]: "Total",
 	[Key.timelineProjects]: "Projects",
-	[Key.timelineExperience]: "Work Experience",
+	[Key.timelineExperience]: "YoE",
 	[Key.timelineCurrent]: "Current Status",
 	[Key.timelineHistory]: "History",
 	[Key.timelineAchievements]: "Achievements",

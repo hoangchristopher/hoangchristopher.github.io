@@ -25,7 +25,7 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "en"; // Language code, for example: 'en', 'zh_CN', 'ja', etc.
 const SITE_TIMEZONE = -7; //Set your website time zone from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: "Chris(topher) Hoang",
+	title: "Christopher Hoang",
 	subtitle: "",
 	siteURL: "https://hoangchristopher.github.io/", // Please replace it with your site url, ending with a slash
 	siteStartDate: "2025-08-01", // The date the site started running, used by the site statistics component to calculate the number of running days
@@ -56,11 +56,11 @@ export const siteConfig: SiteConfig = {
 		// Display mode: "text-icon" displays icon + text, "logo" displays only logo
 		mode: "text-logo",
 		// Top column title text
-		text: "MizukiUI",
+		text: "Christopher Hoang's Page",
 		// Top bar title icon path, public/assets/home/home.webp is used by default
-		icon: "assets/home/home.webp",
+		icon: "assets/home/cut_fruit_lomon.webp",
 		// Website logo image path
-		logo: "assets/home/default-logo.webp",
+		logo: "assets/home/cut_fruit_lomon.webp",
 	},
 
 	// Page auto-zoom configuration
@@ -203,11 +203,11 @@ export const siteConfig: SiteConfig = {
 	generateOgImages: false, // Enable the function of generating open graph images. Note that it takes a long time to render after enabling it. It is not recommended to enable it during local debugging.
 	favicon: [
 		// Leave blank to use the default favicon
-		// {
-		//   src: '/favicon/icon.png', //Icon file path
+		{
+			src: '/assets/home/cut_fruit_lomon.webp', //Icon file path
 		//   theme: 'light', //Optional, specify the theme 'light' | 'dark'
 		//   sizes: '32x32', //optional, icon size
-		// }
+		}
 	],
 
 	// Font configuration
@@ -286,11 +286,6 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:work",
 				},
 				{
-					name: "Skills",
-					url: "/skills/",
-					icon: "material-symbols:psychology",
-				},
-				{
 					name: "Timeline",
 					url: "/timeline/",
 					icon: "material-symbols:timeline",
@@ -328,6 +323,12 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:person",
 			children: [
 				{
+					name: "About",
+					url: "/about/",
+					icon: "material-symbols:person"
+				},
+				/*
+				{
 					name: "Anime",
 					url: "/anime/",
 					icon: "material-symbols:movie",
@@ -348,6 +349,7 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:devices",
 					external: false,
 				},
+				*/
 			],
 		},
 		/*
@@ -482,7 +484,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // Announcement title, fill in the blanks using i18n string key.announcement
-	content: "ブログへようこそ！これはサンプルの告知です", // Announcement content
+	content: "Feel free to reach out!", // Announcement content
 	closable: true, // Allow users to close announcements
 	link: {
 		enable: true, // Enable link
@@ -611,7 +613,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// Sidebar component layout configuration
 	components: {
-		left: ["profile", "announcement", "music-sidebar", "card-toc"],
+		left: ["profile", "announcement", "calendar"],
 		right: [],
 		drawer: [
 			"profile",

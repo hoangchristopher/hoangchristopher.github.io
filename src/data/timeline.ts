@@ -36,15 +36,7 @@ export const timelineData: TimelineItem[] = [
 		skills: ["Java", "C++", "Python", "JavaScript", "HTML/CSS", "Scheme", "SQL"],
 		achievements: [
 			"Current GPA: 3.8/4.0",
-			"Data Structures and Abstraction", 
-			"Efficient Algorithms and Intractable Problems", 
-			"Introduction to Machine Learning", 
-			"Computer Vision and Computational Photography", 
-			"Foundations of Computer Graphics", 
-			"Full-Stack Web Architecture", 
-			"Introduction to the Internet",
-			"Great Ideas of Computer Architecture", 
-			"Structure and Interpretation of Computer Programs"
+			
 		],
 		icon: "material-symbols:school",
 		color: "#059669",

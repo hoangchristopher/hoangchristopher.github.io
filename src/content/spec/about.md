@@ -1,49 +1,43 @@
+# About Me
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/matsuzaka-yuki/mizuki) theme.
+Hi, I’m **Christopher Hoang**, an EECS undergraduate at UC Berkeley interested in software engineering, HCI, and visual computing.
 
-::github{repo="matsuzaka-yuki/Mizuki"}
+I was born and raised in San Jose, California and have been interested in software development ever since I was young. It all started with video games, which evolved into creating Minecraft pixel art, and then further blossomed into exploring how computers and software can help us express ourselves.
 
-## 🌟 Theme Features
+Outside of engineering, I love to travel, play badminton, play video games, and learn cool stuff. I can currently speak English, Vietnamese, and Japanese, but I hope to acquire more languages in the future.
 
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
+## Education
 
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
+**University of California, Berkeley**  
+B.S. Electrical Engineering & Computer Science
+Expected Graduation: Spring 2027
 
+Relevant Coursework:
 
+- CS 180 — Introduction to Computer Vision and Computational Photography
+- CS 184 — Computer Graphics and Imaging
+- CS 160 — User Interface Design and Development
+- CS 170 — Efficient Algorithms and Intractable Problems
+- CS 189 — Introduction to Machine Learning
+- CS 168 — Introduction to the Internet: Architecture and Protocols
+- CS 162 — Operating Systems and Systems Programming
+- INFO 153A — Front-End Web Architecture
+- INFO 153B — Back-End Web Architecture
+- EECS 16A — Designing Information Devices and Systems I
+- EECS 16B — Designing Information Devices and Systems II
+- CS 61A — Structure and Interpretation of Computer Programs
+- CS 61B — Data Structures
+- CS 61C — Great Ideas in Computer Architecture (Machine Structures)
 
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
+## Contact
 
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
+Feel free to reach out!
 
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+- **Email:** hoangchristopher@berkeley.edu
+- **GitHub:** [hoangchristopher](https://github.com/hoangchristopher)
+- **LinkedIn:** [hoangchristopher](https://www.linkedin.com/in/hoangchristopher/)
+- **X / Twitter:** [@hoangclam](https://x.com/hoangclam)
 
 ---
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+Last updated: May 2026

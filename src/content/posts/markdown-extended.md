@@ -2,15 +2,16 @@
 title: Markdown Extended Features
 published: 2024-05-01
 updated: 2024-11-29
-description: 'Read more about Markdown features in Mizuki'
-image: ''
+description: "Read more about Markdown features in Mizuki"
+image: ""
 tags: [Demo, Example, Markdown, Mizuki]
-category: 'Examples'
-draft: false 
+category: "Examples"
+draft: true
 ---
 
 ## GitHub Repository Cards
-You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API. 
+
+You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API.
 
 ::github{repo="matsuzaka-yuki/Mizuki"}
 
@@ -91,3 +92,4 @@ The content :spoiler[is hidden **ayyy**]!
 
 ```markdown
 The content :spoiler[is hidden **ayyy**]!
+```

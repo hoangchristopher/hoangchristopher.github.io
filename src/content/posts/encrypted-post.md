@@ -9,6 +9,7 @@ passwordHint: "123456"
 alias: "encrypted-example"
 tags: ["Test", "Encryption"]
 category: "Technology"
+draft: true
 ---
 
 This blog template is built with [Astro](https://astro.build/). For the things that are not mentioned in this guide, you may find the answers in the [Astro Docs](https://docs.astro.build/).
@@ -27,31 +28,25 @@ draft: false
 ---
 ```
 
-
-
-
-
-| Attribute     | Description                                                                                                                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `title`       | The title of the post.                                                                                                                                                                                      |
-| `published`   | The date the post was published.                                                                                                                                                                            |
-| `pinned`      | Whether this post is pinned to the top of the post list.                                                                                                                                                   |
-| `description` | A short description of the post. Displayed on index page.                                                                                                                                                   |
-| `image`       | The cover image path of the post.<br/>1. Start with `http://` or `https://`: Use web image<br/>2. Start with `/`: For image in `public` dir<br/>3. With none of the prefixes: Relative to the markdown file |
-| `tags`        | The tags of the post.                                                                                                                                                                                       |
-| `category`    | The category of the post.                                                                                                                                                                                   |
-| `alias`   | alias for the post. The post will be accessible at `/posts/{alias}/`. Example: `my-special-article` (will be available at `/posts/my-special-article/`)                                   |
-| `licenseName` | The license name for the post content.                                                                                                                                                                      |
-| `author`      | The author of the post.                                                                                                                                                                                     |
-| `sourceLink`  | The source link or reference for the post content.                                                                                                                                                          |
-| `draft`       | If this post is still a draft, which won't be displayed.                                                                                                                                                    |
-| `encrypted`   | Whether this post is password protected.                                                                                                                                                                    |
-| `password`    | The password to unlock the encrypted post.                                                                                                                                                                  |
-| `passwordHint`| A hint to help users remember the password. Displayed below the password input.                                                                                                                             |
+| Attribute      | Description                                                                                                                                                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`        | The title of the post.                                                                                                                                                                                      |
+| `published`    | The date the post was published.                                                                                                                                                                            |
+| `pinned`       | Whether this post is pinned to the top of the post list.                                                                                                                                                    |
+| `description`  | A short description of the post. Displayed on index page.                                                                                                                                                   |
+| `image`        | The cover image path of the post.<br/>1. Start with `http://` or `https://`: Use web image<br/>2. Start with `/`: For image in `public` dir<br/>3. With none of the prefixes: Relative to the markdown file |
+| `tags`         | The tags of the post.                                                                                                                                                                                       |
+| `category`     | The category of the post.                                                                                                                                                                                   |
+| `alias`        | alias for the post. The post will be accessible at `/posts/{alias}/`. Example: `my-special-article` (will be available at `/posts/my-special-article/`)                                                     |
+| `licenseName`  | The license name for the post content.                                                                                                                                                                      |
+| `author`       | The author of the post.                                                                                                                                                                                     |
+| `sourceLink`   | The source link or reference for the post content.                                                                                                                                                          |
+| `draft`        | If this post is still a draft, which won't be displayed.                                                                                                                                                    |
+| `encrypted`    | Whether this post is password protected.                                                                                                                                                                    |
+| `password`     | The password to unlock the encrypted post.                                                                                                                                                                  |
+| `passwordHint` | A hint to help users remember the password. Displayed below the password input.                                                                                                                             |
 
 ## Where to Place the Post Files
-
-
 
 Your post files should be placed in `src/content/posts/` directory. You can also create sub-directories to better organize your posts and assets.
 
@@ -78,18 +73,19 @@ category: "Technology"
 ```
 
 When a alias is set:
+
 - The post will be accessible at the custom URL (e.g., `/posts/my-special-article/`)
 - The default `/posts/{slug}/` URL will still work
 - RSS/Atom feeds will use the custom alias
 - All internal links will automatically use the custom alias
 
 **Important Notes:**
+
 - Alias should NOT include `/posts/` prefix (it will be added automatically)
 - Avoid special characters and spaces in alias
 - Use lowercase letters and hyphens for best SEO practices
 - Make sure alias are unique across all posts
 - Don't include leading or trailing slashes
-
 
 ## How It Works
 
@@ -117,15 +113,16 @@ passwordHint: "Hint: The password is my dog's name"
 
 ### Fields
 
-| Field          | Required | Description                                              |
-|----------------|----------|----------------------------------------------------------|
-| `encrypted`    | Yes      | Set to `true` to enable password protection              |
-| `password`     | Yes      | The password to unlock the post                          |
+| Field          | Required | Description                                             |
+| -------------- | -------- | ------------------------------------------------------- |
+| `encrypted`    | Yes      | Set to `true` to enable password protection             |
+| `password`     | Yes      | The password to unlock the post                         |
 | `passwordHint` | No       | A hint displayed below the password input to help users |
 
 ### How the Unlock Box Looks
 
 The unlock box displays:
+
 - A lock icon in the theme's primary color
 - The post title "Password Protected"
 - A description asking for the password
