@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Christopher Hoang</title>
+  <subtitle>No description</subtitle>
+  <link href="https://hoangchristopher.github.io/" rel="alternate" type="text/html"/>
+  <link href="https://hoangchristopher.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <id>https://hoangchristopher.github.io/</id>
+  <updated>2026-05-29T12:14:45.415Z</updated>
+  <language>en</language>
+</feed>
